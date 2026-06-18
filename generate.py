@@ -644,11 +644,6 @@ def get_style_css(style):
 
         "modern": """
     /* ── Modern: 渋谷・品川・中野・新宿 ── */
-    .hero-city-bg {{ position:absolute; top:50%; left:50%; transform:translate(-50%,-52%); font-size:clamp(7rem,18vw,14rem); font-weight:900; color:rgba(0,0,0,0.05); font-family:'Noto Sans JP',sans-serif; letter-spacing:-0.06em; pointer-events:none; z-index:0; line-height:1; white-space:nowrap; user-select:none; }}
-    .hero-content {{ text-align:left; }}
-    .hero-cta-group {{ align-items:flex-start; }}
-    .hero-desc {{ margin-left:0; margin-right:auto; text-align:left; }}
-    .hero-note {{ text-align:left; }}
     .hero h1 {{ font-size:clamp(2.4rem,6vw,4.4rem); font-weight:700; letter-spacing:-0.02em; line-height:1.2; }}
     .hero-badge {{ border-radius:0; font-weight:700; }}
     .stat-card {{ border-top:none; border-radius:0; border-bottom:3px solid var(--gold); box-shadow:none; }}
@@ -1069,12 +1064,35 @@ def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
       var nav = document.getElementById('nav-menu');
       var isOpen = nav.classList.toggle('open');
       btn.classList.toggle('open', isOpen);
+      if (!isOpen) {{
+        var sub = document.getElementById('lang-submenu');
+        if (sub) sub.classList.remove('open');
+        var arrow = document.getElementById('lang-arrow');
+        if (arrow) arrow.style.transform = '';
+      }}
     }}
     function closeMenu() {{
       var btn = document.getElementById('hamburger-btn');
       var nav = document.getElementById('nav-menu');
       nav.classList.remove('open');
       btn.classList.remove('open');
+      var sub = document.getElementById('lang-submenu');
+      if (sub) sub.classList.remove('open');
+      var arrow = document.getElementById('lang-arrow');
+      if (arrow) arrow.style.transform = '';
+    }}
+    function toggleLang() {{
+      var sub = document.getElementById('lang-submenu');
+      var arrow = document.getElementById('lang-arrow');
+      var isOpen = sub.classList.toggle('open');
+      if (arrow) arrow.style.transform = isOpen ? 'rotate(180deg)' : '';
+    }}
+    function openCompany() {{
+      closeMenu();
+      document.getElementById('company-panel').classList.add('open');
+    }}
+    function closeCompany() {{
+      document.getElementById('company-panel').classList.remove('open');
     }}
     document.addEventListener('click', function(e) {{
       if (!e.target.closest('#hamburger-btn') && !e.target.closest('#nav-menu')) {{
@@ -1099,14 +1117,7 @@ def make_html(ward):
     header_bg = p1 + "f2"
     style_css = get_style_css(style)
     area_en = ward["area_en"]
-    if style in ("premium", "sakura"):
-        hero_deco = f'    <div class="hero-city-bg">{area_en}</div>'
-    elif style == "modern":
-        hero_deco = f'    <div class="hero-city-bg">{area_en}</div>'
-    elif style == "imperial":
-        hero_deco = '    <div class="hero-ornament"><span>✦ ─── ✦ ─── ✦</span></div>'
-    else:
-        hero_deco = ""
+    hero_deco = ""
     towns_html = make_towns_html(ward.get("towns", []))
     characteristics_html = "\n".join([
         f"""        <div class="area-card">
@@ -1161,11 +1172,29 @@ def make_html(ward):
     .hamburger.open span:nth-child(1) {{ transform: translateY(7px) rotate(45deg); }}
     .hamburger.open span:nth-child(2) {{ opacity: 0; transform: scaleX(0); }}
     .hamburger.open span:nth-child(3) {{ transform: translateY(-7px) rotate(-45deg); }}
-    .nav-menu {{ position: absolute; top: calc(100% + 6px); right: 16px; background: rgba(255,255,255,0.98); border: 1px solid var(--gray-light); border-radius: 10px; padding: 8px; display: none; flex-direction: column; gap: 4px; box-shadow: 0 6px 24px rgba(0,0,0,0.1); min-width: 90px; }}
+    .nav-menu {{ position: absolute; top: calc(100% + 6px); right: 16px; background: rgba(255,255,255,0.98); border: 1px solid var(--gray-light); border-radius: 12px; padding: 6px; display: none; flex-direction: column; gap: 2px; box-shadow: 0 6px 28px rgba(0,0,0,0.12); min-width: 160px; }}
     .nav-menu.open {{ display: flex; }}
-    .lang-btn {{ background: transparent; border: none; color: var(--text-sub); border-radius: 6px; padding: 7px 14px; font-size: 0.8rem; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; text-align: center; width: 100%; letter-spacing: 0.04em; }}
+    .nav-item {{ background: transparent; border: none; padding: 9px 12px; width: 100%; text-align: left; cursor: pointer; font-size: 0.84rem; color: var(--navy); display: flex; justify-content: space-between; align-items: center; border-radius: 8px; font-family: 'Noto Sans JP', sans-serif; transition: background 0.15s; }}
+    .nav-item:hover {{ background: var(--gray-bg); }}
+    .nav-divider {{ height: 1px; background: var(--gray-light); margin: 4px 6px; }}
+    .nav-arrow {{ font-size: 0.7rem; transition: transform 0.2s; display: inline-block; color: var(--text-sub); }}
+    .lang-submenu {{ display: none; flex-direction: column; gap: 1px; padding: 2px 6px 4px; }}
+    .lang-submenu.open {{ display: flex; }}
+    .lang-btn {{ background: transparent; border: none; color: var(--text-sub); border-radius: 6px; padding: 7px 12px; font-size: 0.8rem; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; text-align: left; width: 100%; letter-spacing: 0.04em; }}
     .lang-btn:hover {{ background: var(--gray-bg); color: var(--navy); }}
     .lang-btn.active {{ background: var(--navy); color: #fff; font-weight: 700; }}
+    /* ── COMPANY OVERLAY ── */
+    .company-overlay {{ position: fixed; inset: 0; background: rgba(0,0,0,0.48); z-index: 300; display: none; align-items: center; justify-content: center; backdrop-filter: blur(4px); padding: 20px; }}
+    .company-overlay.open {{ display: flex; }}
+    .company-inner {{ background: #fff; border-radius: 20px; padding: 40px 36px; max-width: 480px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto; }}
+    .company-close {{ position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #ccc; line-height: 1; }}
+    .company-close:hover {{ color: var(--navy); }}
+    .company-heading {{ font-family: 'Noto Serif JP', serif; font-size: 1.25rem; color: var(--navy); margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid var(--gold); }}
+    .company-table {{ width: 100%; border-collapse: collapse; }}
+    .company-table tr {{ border-bottom: 1px solid var(--gray-light); }}
+    .company-table th {{ text-align: left; padding: 13px 12px 13px 0; font-size: 0.78rem; color: var(--text-sub); font-weight: 600; width: 38%; white-space: nowrap; letter-spacing: 0.04em; }}
+    .company-table td {{ padding: 13px 0; font-size: 0.92rem; color: var(--navy); }}
+    .company-footer-note {{ margin-top: 28px; font-size: 0.78rem; color: var(--text-sub); line-height: 1.7; }}
     /* ── HERO ── */
     .hero {{ min-height: 100vh; background: url("{hero_img}?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }}
     .hero::before {{ content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.72); }}
@@ -1343,13 +1372,23 @@ def make_html(ward):
 
   <header class="site-header">
     <div class="logo">{SITE_NAME}</div>
-    <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="言語切替">
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="メニュー">
       <span></span><span></span><span></span>
     </button>
     <nav class="nav-menu" id="nav-menu">
-      <button class="lang-btn active" data-lang="ja" onclick="setLang('ja');closeMenu()">JP</button>
-      <button class="lang-btn" data-lang="en" onclick="setLang('en');closeMenu()">EN</button>
-      <button class="lang-btn" data-lang="zh" onclick="setLang('zh');closeMenu()">中文</button>
+      <button class="nav-item" onclick="toggleLang()">
+        <span>🌐 言語</span>
+        <span class="nav-arrow" id="lang-arrow">▾</span>
+      </button>
+      <div class="lang-submenu" id="lang-submenu">
+        <button class="lang-btn active" data-lang="ja" onclick="setLang('ja');closeMenu()">JP — 日本語</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en');closeMenu()">EN — English</button>
+        <button class="lang-btn" data-lang="zh" onclick="setLang('zh');closeMenu()">中文</button>
+      </div>
+      <div class="nav-divider"></div>
+      <button class="nav-item" onclick="openCompany()">
+        <span>🏢 運営会社</span>
+      </button>
     </nav>
   </header>
 
@@ -1595,6 +1634,22 @@ def make_html(ward):
         <p>✅ 入力内容をコピーしました！<br>LINEのトークに貼り付けて送信してください。</p>
       </div>
       <p class="modal-note" data-i18n="modal_note">送信内容はクリップボードにコピーされます。LINE画面で貼り付けて送信してください。</p>
+    </div>
+  </div>
+
+  <!-- 運営会社パネル -->
+  <div id="company-panel" class="company-overlay" onclick="if(event.target===this)closeCompany()">
+    <div class="company-inner">
+      <button class="company-close" onclick="closeCompany()">✕</button>
+      <h2 class="company-heading">運営会社</h2>
+      <table class="company-table">
+        <tr><th>会社名</th><td>合同会社互陽</td></tr>
+        <tr><th>住所</th><td>東京都港区赤坂2丁目1番1号</td></tr>
+        <tr><th>資本金</th><td>100万円</td></tr>
+        <tr><th>代表社員</th><td>石塚 信</td></tr>
+        <tr><th>設立</th><td>2024年1月</td></tr>
+      </table>
+      <p class="company-footer-note">不動産の売却・購入に関するご相談はLINEからお気軽にどうぞ。秘密厳守・査定無料で対応いたします。</p>
     </div>
   </div>
 
