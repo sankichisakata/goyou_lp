@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOYOU LP 管理ページ | 東京23区</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    body{ font-family:'Noto Sans JP',sans-serif; background:#f4f6f9; color:#1e2d3d; }
+    .page-header{
+      background:#fff; border-bottom:1px solid #e4e7ed; padding:24px 40px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .page-title{ font-family:'Noto Serif JP',serif; font-size:1.4rem; font-weight:700; color:#1e2d3d; }
+    .page-sub{ font-size:0.8rem; color:#64748b; margin-top:2px; }
+    .count-badge{ background:#1e2d3d; color:#fff; border-radius:50px; padding:4px 16px; font-size:0.82rem; font-weight:700; }
+    .grid-wrap{ max-width:1440px; margin:0 auto; padding:40px; }
+    .ward-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:20px;
+    }
+    .ward-card{
+      background:#fff; border-radius:12px; overflow:hidden;
+      text-decoration:none; color:inherit;
+      border:1px solid #e4e7ed;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+      transition:transform 0.2s, box-shadow 0.2s;
+      display:flex; flex-direction:column;
+    }
+    .ward-card:hover{ transform:translateY(-4px); box-shadow:0 10px 32px rgba(0,0,0,0.12); }
+    .card-img{
+      height:140px; background-size:cover; background-position:center;
+      background-color:#ddd;
+      position:relative;
+    }
+    .card-img::after{
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.28) 100%);
+    }
+    .card-body{ padding:16px 18px; flex:1; border-top:3px solid var(--accent); }
+    .card-code{ font-size:0.68rem; color:#aaa; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:4px; }
+    .card-name{ font-family:'Noto Serif JP',serif; font-size:1.15rem; font-weight:700; color:#1e2d3d; margin-bottom:4px; }
+    .card-vibe{ font-size:0.73rem; color:#64748b; margin-bottom:8px; line-height:1.5; }
+    .card-price{ font-size:0.78rem; color:var(--accent); font-weight:700; background:rgba(0,0,0,0.03); border-radius:4px; padding:3px 8px; display:inline-block; }
+    .page-footer{ text-align:center; padding:40px; font-size:0.78rem; color:#aaa; }
+    @media(max-width:640px){
+      .grid-wrap{ padding:20px; }
+      .ward-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+      .page-header{ padding:16px 20px; flex-direction:column; align-items:flex-start; gap:8px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div>
+      <div class="page-title">GOYOU 御用 — LP 管理ページ</div>
+      <div class="page-sub">東京23区 個別ランディングページ一覧</div>
+    </div>
+    <div class="count-badge">23区</div>
+  </header>
+  <div class="grid-wrap">
+    <div class="ward-grid">
+    <a class="ward-card" href="goyou_cy.html" target="_blank" style="--accent:#c9a84c;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1477922255403-201f05800330?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_cy</div>
+        <div class="card-name">千代田区</div>
+        <div class="card-vibe">格式 · 伝統 · 皇居</div>
+        <div class="card-price">約250〜450万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_cu.html" target="_blank" style="--accent:#c0a060;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1523990853274-86278eb4e38c?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_cu</div>
+        <div class="card-name">中央区</div>
+        <div class="card-vibe">銀座 · 洗練 · ラグジュアリー</div>
+        <div class="card-price">約130〜280万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_mn.html" target="_blank" style="--accent:#b0b8c0;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1479559459765-c7e90b2f5f87?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_mn</div>
+        <div class="card-name">港区</div>
+        <div class="card-vibe">プレミアム · 麻布台 · グローバル</div>
+        <div class="card-price">約250〜500万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_sj.html" target="_blank" style="--accent:#d040c0;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1572982349914-484e4f3dc77f?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_sj</div>
+        <div class="card-name">新宿区</div>
+        <div class="card-vibe">多様性 · エネルギー · 交差点</div>
+        <div class="card-price">約150〜280万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_bk.html" target="_blank" style="--accent:#c9a040;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1678959059270-9fa1ae2f87bc?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_bk</div>
+        <div class="card-name">文京区</div>
+        <div class="card-vibe">知性 · 文教 · 東京大学</div>
+        <div class="card-price">約170〜300万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_ti.html" target="_blank" style="--accent:#d83020;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1543402701-cfd2d56f773b?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_ti</div>
+        <div class="card-name">台東区</div>
+        <div class="card-vibe">江戸情緒 · 浅草 · 蔵前</div>
+        <div class="card-price">約80〜180万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_sm.html" target="_blank" style="--accent:#c02818;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1740982355439-659cf202f8d7?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_sm</div>
+        <div class="card-name">墨田区</div>
+        <div class="card-vibe">北斎 · 波濤 · スカイツリー</div>
+        <div class="card-price">約70〜150万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_ko.html" target="_blank" style="--accent:#18b0d0;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1741097574041-d70d3fe6a3ab?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_ko</div>
+        <div class="card-name">江東区</div>
+        <div class="card-vibe">湾岸 · 再開発 · 未来都市</div>
+        <div class="card-price">約100〜200万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_sn.html" target="_blank" style="--accent:#3870c0;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1762269152343-b28e02b36022?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_sn</div>
+        <div class="card-name">品川区</div>
+        <div class="card-vibe">リニア · テクノロジー · 国際</div>
+        <div class="card-price">約120〜250万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_mg.html" target="_blank" style="--accent:#e06090;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1743834722667-11fa7caceb2f?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_mg</div>
+        <div class="card-name">目黒区</div>
+        <div class="card-vibe">目黒川 · 桜 · 洗練</div>
+        <div class="card-price">約160〜300万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_ot.html" target="_blank" style="--accent:#c9a84c;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1741230127615-8334deb6b463?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_ot</div>
+        <div class="card-name">大田区</div>
+        <div class="card-vibe">羽田 · 国際 · 田園調布</div>
+        <div class="card-price">約80〜350万円 / ㎡（エリアにより大きく異なる）</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_st.html" target="_blank" style="--accent:#7ac040;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1543241906-6fbfce987157?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_st</div>
+        <div class="card-name">世田谷区</div>
+        <div class="card-vibe">緑豊か · 高級住宅地 · 二子玉川</div>
+        <div class="card-price">約120〜300万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_sb.html" target="_blank" style="--accent:#a0e020;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1741225296006-4b14e09a6bc6?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_sb</div>
+        <div class="card-name">渋谷区</div>
+        <div class="card-vibe">グローバル · スクランブル · 最先端</div>
+        <div class="card-price">約200〜350万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_sg.html" target="_blank" style="--accent:#e05818;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1765044940558-87d7711a321c?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_sg</div>
+        <div class="card-name">杉並区</div>
+        <div class="card-vibe">カルチャー · 個性 · 高円寺</div>
+        <div class="card-price">約90〜180万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_nk.html" target="_blank" style="--accent:#4060e0;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1649671317724-17407ad018bd?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_nk</div>
+        <div class="card-name">中野区</div>
+        <div class="card-vibe">サブカル · 再開発 · 新世代</div>
+        <div class="card-price">約100〜200万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_ts.html" target="_blank" style="--accent:#a040d0;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1742268351444-7e153a9fb747?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_ts</div>
+        <div class="card-name">豊島区</div>
+        <div class="card-vibe">池袋 · アニメ · 創造都市</div>
+        <div class="card-price">約80〜160万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_ki.html" target="_blank" style="--accent:#e02828;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1555407792-483124db3eb9?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_ki</div>
+        <div class="card-name">北区</div>
+        <div class="card-vibe">赤羽 · 活気 · 下町の底力</div>
+        <div class="card-price">約70〜140万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_ak.html" target="_blank" style="--accent:#c87028;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1574328158905-e9a654732448?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_ak</div>
+        <div class="card-name">荒川区</div>
+        <div class="card-vibe">下町 · 都電 · 懐かしさ</div>
+        <div class="card-price">約70〜130万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_ib.html" target="_blank" style="--accent:#4880c8;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1630999002837-8b560d13ee36?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_ib</div>
+        <div class="card-name">板橋区</div>
+        <div class="card-vibe">安定 · 生活充実 · 高島平</div>
+        <div class="card-price">約65〜130万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_nr.html" target="_blank" style="--accent:#68c030;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1717153512097-3a10a071737f?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_nr</div>
+        <div class="card-name">練馬区</div>
+        <div class="card-vibe">緑の楽園 · 自然 · 石神井公園</div>
+        <div class="card-price">約60〜120万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_ad.html" target="_blank" style="--accent:#e07020;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1555407792-483124db3eb9?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_ad</div>
+        <div class="card-name">足立区</div>
+        <div class="card-vibe">再評価 · 北千住 · 活気</div>
+        <div class="card-price">約55〜120万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_ks.html" target="_blank" style="--accent:#c09010;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1765044940558-87d7711a321c?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_ks</div>
+        <div class="card-name">葛飾区</div>
+        <div class="card-vibe">寅さん · 柴又 · 下町の粋</div>
+        <div class="card-price">約55〜110万円 / ㎡</div>
+      </div>
+    </a>
+    <a class="ward-card" href="goyou_eg.html" target="_blank" style="--accent:#28a8e0;">
+      <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1762269152343-b28e02b36022?auto=format&fit=crop&w=600&q=70');"></div>
+      <div class="card-body">
+        <div class="card-code">goyou_eg</div>
+        <div class="card-name">江戸川区</div>
+        <div class="card-vibe">川と自然 · ファミリー · 葛西</div>
+        <div class="card-price">約55〜120万円 / ㎡</div>
+      </div>
+    </a>
+    </div>
+  </div>
+  <footer class="page-footer">© 合同会社互陽 | GOYOU 御用</footer>
+</body>
+</html>

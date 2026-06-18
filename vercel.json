@@ -1,0 +1,31 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/", "destination": "/goyou_lp_manage.html" },
+    { "source": "/manage", "destination": "/goyou_lp_manage.html" },
+    { "source": "/cy", "destination": "/goyou_cy.html" },
+    { "source": "/cu", "destination": "/goyou_cu.html" },
+    { "source": "/mn", "destination": "/goyou_mn.html" },
+    { "source": "/sj", "destination": "/goyou_sj.html" },
+    { "source": "/bk", "destination": "/goyou_bk.html" },
+    { "source": "/ti", "destination": "/goyou_ti.html" },
+    { "source": "/sm", "destination": "/goyou_sm.html" },
+    { "source": "/ko", "destination": "/goyou_ko.html" },
+    { "source": "/sn", "destination": "/goyou_sn.html" },
+    { "source": "/mg", "destination": "/goyou_mg.html" },
+    { "source": "/ot", "destination": "/goyou_ot.html" },
+    { "source": "/st", "destination": "/goyou_st.html" },
+    { "source": "/sb", "destination": "/goyou_sb.html" },
+    { "source": "/nk", "destination": "/goyou_nk.html" },
+    { "source": "/sg", "destination": "/goyou_sg.html" },
+    { "source": "/ts", "destination": "/goyou_ts.html" },
+    { "source": "/ki", "destination": "/goyou_ki.html" },
+    { "source": "/ak", "destination": "/goyou_ak.html" },
+    { "source": "/ib", "destination": "/goyou_ib.html" },
+    { "source": "/nr", "destination": "/goyou_nr.html" },
+    { "source": "/ad", "destination": "/goyou_ad.html" },
+    { "source": "/ks", "destination": "/goyou_ks.html" },
+    { "source": "/eg", "destination": "/goyou_eg.html" }
+  ]
+}

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>豊島区の不動産を高く売る｜外資系ネットワーク×個人売買サポート</title>
+  <meta name="description" content="豊島区の不動産売却を、外資系不動産会社出身プロが徹底サポート。池袋, 目白, 巣鴨, 駒込の物件売却実績多数。まずはLINEで無料相談。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #180830; --navy-light: #220c42;
+      --gold: #a040d0; --gold-light: #c868f0;
+      --white: #ffffff; --gray-bg: #f4f6f9; --gray-light: #e4e7ed;
+      --text: #1e2d3d; --text-sub: #64748b;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); line-height: 1.7; background: #fff; }
+    /* ── HEADER ── */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 12px 28px; display: flex; justify-content: space-between; align-items: center; }
+    .site-header .logo { color: var(--navy); font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; }
+    .header-line-btn { background: #06C755; color: white; border: none; border-radius: 24px; padding: 8px 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; text-decoration: none; transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif; }
+    .header-line-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .line-icon { width: 18px; height: 18px; }
+    /* ── HERO ── */
+    .hero { min-height: 100vh; background: url("https://images.unsplash.com/photo-1742268351444-7e153a9fb747?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.72); }
+    .hero-content { position: relative; max-width: 820px; }
+    .hero-badge { display: inline-block; border: 1px solid rgba(0,0,0,0.12); background: rgba(255,255,255,0.9); color: var(--navy); font-size: 0.72rem; letter-spacing: 0.2em; padding: 5px 18px; border-radius: 50px; margin-bottom: 28px; font-weight: 500; backdrop-filter: blur(4px); }
+    .hero h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 700; color: var(--navy); line-height: 1.35; margin-bottom: 20px; }
+    .hero h1 .ward-name { color: var(--gold); }
+    .hero-sub { font-size: clamp(0.95rem, 2.5vw, 1.2rem); color: var(--text); margin-bottom: 12px; font-weight: 300; }
+    .hero-desc { font-size: 0.93rem; color: var(--text-sub); margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.9; }
+    .hero-cta-group { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .btn-line-hero { background: #06C755; color: white; text-decoration: none; border-radius: 50px; padding: 18px 52px; font-size: 1.12rem; font-weight: 700; display: flex; align-items: center; gap: 10px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 28px rgba(6,199,85,0.4); border: none; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
+    .btn-line-hero:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(6,199,85,0.52); }
+    .btn-line-icon { width: 26px; height: 26px; }
+    .hero-note { font-size: 0.77rem; color: var(--text-sub); }
+    /* ── SECTIONS ── */
+    section { padding: 88px 24px; }
+    .container { max-width: 1020px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; font-weight: 600; display: block; }
+    .section-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 18px; }
+    .section-desc { color: var(--text-sub); font-size: 0.95rem; max-width: 640px; line-height: 1.85; }
+    /* ── STAT CARDS ── */
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 52px; }
+    .stat-card { background: #fff; border-radius: 12px; padding: 32px 24px; text-align: center; border: 1px solid var(--gray-light); border-top: 3px solid var(--gold); box-shadow: 0 2px 12px rgba(0,0,0,0.05); transition: box-shadow 0.2s, transform 0.2s; }
+    .stat-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); transform: translateY(-3px); }
+    .stat-num { font-family: 'Noto Serif JP', serif; font-size: 2.4rem; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 8px; }
+    .stat-num span { font-size: 1.1rem; }
+    .stat-label { font-size: 0.84rem; color: var(--text-sub); }
+    /* ── AREA CARDS ── */
+    .area-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; margin-top: 52px; }
+    .area-card { background: #fff; border: 1px solid var(--gray-light); border-radius: 12px; padding: 32px 28px; transition: box-shadow 0.25s, transform 0.25s; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    .area-card:hover { box-shadow: 0 10px 36px rgba(0,0,0,0.1); transform: translateY(-4px); }
+    .area-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+    .area-card h3 { font-family: 'Noto Serif JP', serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .area-card p { font-size: 0.88rem; color: var(--text-sub); line-height: 1.8; }
+    /* ── MARKET SECTION (light) ── */
+    .market { background: var(--gray-bg); }
+    .market .section-title { color: var(--navy); }
+    .market .section-desc { color: var(--text-sub); }
+    .market-content { margin-top: 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .market-left .price-badge { background: #fff; border: 1px solid var(--gray-light); border-radius: 12px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    .price-label { font-size: 0.73rem; color: var(--text-sub); letter-spacing: 0.12em; margin-bottom: 10px; display: block; text-transform: uppercase; }
+    .price-value { font-family: 'Noto Serif JP', serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); }
+    .trend-badge { display: inline-flex; align-items: center; gap: 6px; border-radius: 50px; padding: 4px 14px; font-size: 0.82rem; font-weight: 700; margin-top: 14px; }
+    .market-detail { font-size: 0.88rem; color: var(--text-sub); line-height: 1.9; }
+    .hot-areas { margin-top: 24px; }
+    .hot-areas-label { font-size: 0.72rem; color: #aaa; letter-spacing: 0.15em; margin-bottom: 10px; display: block; text-transform: uppercase; }
+    .area-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .area-tag { background: #fff; border: 1px solid var(--gray-light); color: var(--text-sub); border-radius: 50px; padding: 4px 14px; font-size: 0.8rem; }
+    .market-right { background: #fff; border: 1px solid var(--gray-light); border-radius: 12px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+    .market-right h3 { font-family: 'Noto Serif JP', serif; color: var(--navy); font-size: 1rem; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 2px solid var(--gold); }
+    .market-point { display: flex; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--gray-light); }
+    .market-point:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .market-point-num { width: 28px; height: 28px; background: var(--navy); color: #fff; border-radius: 50%; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .market-point-text { font-size: 0.87rem; color: var(--text-sub); line-height: 1.75; }
+    .market-point-text strong { color: var(--navy); display: block; margin-bottom: 4px; }
+    /* ── ABOUT ── */
+    .about { background: #fff; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1.3fr; gap: 60px; align-items: start; margin-top: 52px; }
+    .about-left { background: var(--navy); border-radius: 12px; padding: 40px 32px; color: white; }
+    .about-left h3 { font-family: 'Noto Serif JP', serif; font-size: 1.25rem; color: var(--gold); margin-bottom: 24px; line-height: 1.6; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .career-item { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .career-item:last-child { border-bottom: none; }
+    .career-tag { display: inline-block; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); font-size: 0.72rem; padding: 2px 10px; border-radius: 4px; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .career-desc { font-size: 0.87rem; color: rgba(255,255,255,0.7); line-height: 1.8; }
+    .strength-list { list-style: none; }
+    .strength-list li { display: flex; align-items: flex-start; gap: 18px; padding: 24px 0; border-bottom: 1px solid var(--gray-light); }
+    .strength-list li:last-child { border-bottom: none; }
+    .strength-icon { width: 50px; height: 50px; background: var(--gray-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; border: 1px solid var(--gray-light); }
+    .strength-text strong { display: block; font-size: 1rem; color: var(--navy); margin-bottom: 6px; font-weight: 700; }
+    .strength-text p { font-size: 0.87rem; color: var(--text-sub); line-height: 1.8; }
+    /* ── FLOW ── */
+    .flow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0; margin-top: 52px; position: relative; }
+    .flow-step { text-align: center; padding: 0 12px; position: relative; }
+    .flow-step:not(:last-child)::after { content: '→'; position: absolute; right: -10px; top: 38px; color: var(--gold); font-size: 1.3rem; }
+    .step-num { width: 76px; height: 76px; background: var(--navy); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .step-num .num { font-family: 'Noto Serif JP', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .step-num .step-label { font-size: 0.52rem; color: rgba(255,255,255,0.45); letter-spacing: 0.1em; }
+    .flow-step h3 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .flow-step p { font-size: 0.78rem; color: var(--text-sub); line-height: 1.7; }
+    /* ── CTA ── */
+    .cta-section { background: var(--gray-bg); text-align: center; padding: 100px 24px; }
+    .cta-section .section-label { color: var(--gold); opacity: 1; }
+    .cta-section .section-title { color: var(--navy); }
+    .cta-desc { color: var(--text-sub); font-size: 1rem; max-width: 540px; margin: 16px auto 52px; line-height: 1.85; }
+    .btn-line-main { display: inline-flex; align-items: center; gap: 12px; background: #06C755; color: white; text-decoration: none; border-radius: 60px; padding: 22px 64px; font-size: 1.22rem; font-weight: 700; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 8px 40px rgba(6,199,85,0.4); margin-bottom: 20px; border: none; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
+    .btn-line-main:hover { transform: translateY(-3px); box-shadow: 0 14px 50px rgba(6,199,85,0.52); }
+    .btn-line-main .btn-line-icon-lg { width: 32px; height: 32px; }
+    .cta-notes { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-top: 24px; }
+    .cta-note { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--text-sub); }
+    .cta-note::before { content: '✓'; color: var(--navy); font-weight: 700; }
+    /* ── FOOTER ── */
+    footer { background: #f4f6f9; color: var(--text-sub); text-align: center; padding: 40px 24px; font-size: 0.78rem; border-top: 1px solid var(--gray-light); }
+    footer .footer-logo { font-family: 'Noto Serif JP', serif; color: var(--navy); font-size: 1.1rem; margin-bottom: 4px; letter-spacing: 0.06em; font-weight: 700; }
+    /* ── FLOAT BUTTON ── */
+    .float-line { position: fixed; bottom: 28px; right: 24px; z-index: 200; background: #06C755; color: white; border-radius: 50px; padding: 14px 24px; font-weight: 700; font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 24px rgba(6,199,85,0.5); transition: transform 0.2s; animation: pulse 2.5s infinite; border: none; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; }
+    .float-line:hover { transform: scale(1.05); }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 4px 24px rgba(6,199,85,0.5); } 50% { box-shadow: 0 6px 40px rgba(6,199,85,0.72); } }
+    .float-line .line-icon-sm { width: 20px; height: 20px; }
+    /* ── 町タブ ── */
+    .town-section { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--gray-light); }
+    .town-section-title { font-family: 'Noto Serif JP', serif; color: var(--navy); font-size: 0.95rem; margin-bottom: 18px; font-weight: 700; }
+    .town-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .town-btn { background: #fff; border: 1px solid var(--gray-light); color: var(--text-sub); border-radius: 50px; padding: 7px 18px; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif; }
+    .town-btn:hover { background: var(--gray-bg); border-color: var(--navy); color: var(--navy); }
+    .town-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; font-weight: 700; }
+    .town-panel { display: none; }
+    .town-panel.active { display: block; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .town-prices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .price-item { background: var(--gray-bg); border: 1px solid var(--gray-light); border-radius: 8px; padding: 14px 16px; }
+    .price-type { font-size: 0.68rem; color: #aaa; letter-spacing: 0.1em; display: block; margin-bottom: 5px; text-transform: uppercase; }
+    .price-val { font-family: 'Noto Serif JP', serif; font-size: 0.9rem; color: var(--navy); font-weight: 700; }
+    .town-feature { font-size: 0.87rem; color: var(--text-sub); line-height: 1.8; margin-bottom: 12px; }
+    .town-demand { font-size: 0.82rem; margin-bottom: 10px; }
+    .demand-label { color: #aaa; }
+    .demand-val { color: var(--text); }
+    .town-trend { display: inline-block; background: rgba(6,199,85,0.08); border: 1px solid rgba(6,199,85,0.25); color: #1a7a3e; border-radius: 50px; padding: 3px 12px; font-size: 0.78rem; font-weight: 700; }
+    /* ── モーダル ── */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal-inner { background: white; border-radius: 16px; width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; position: relative; padding: 40px 36px; }
+    .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #ccc; line-height: 1; }
+    .modal-close:hover { color: var(--navy); }
+    .modal-header { text-align: center; margin-bottom: 28px; }
+    .modal-line-badge { background: #06C755; color: white; border-radius: 50px; padding: 6px 20px; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px; }
+    .modal-header h2 { font-family: 'Noto Serif JP', serif; font-size: 1.35rem; color: var(--navy); margin-bottom: 6px; }
+    .modal-header p { font-size: 0.83rem; color: #999; }
+    .form-group { margin-bottom: 14px; }
+    .form-label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+    .form-label .req { color: #e04040; }
+    .form-input, .form-select, .form-textarea { width: 100%; border: 1px solid #e0e3e8; border-radius: 8px; padding: 11px 14px; font-size: 0.9rem; font-family: 'Noto Sans JP', sans-serif; transition: border-color 0.2s; box-sizing: border-box; background: #fafbfc; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--navy); background: #fff; }
+    .form-textarea { height: 80px; resize: vertical; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-error { color: #e04040; font-size: 0.82rem; margin-bottom: 10px; min-height: 18px; }
+    .btn-send-line { width: 100%; background: #06C755; color: white; border: none; border-radius: 50px; padding: 15px; font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.2s; margin-top: 6px; font-family: 'Noto Sans JP', sans-serif; }
+    .btn-send-line:hover { opacity: 0.88; transform: translateY(-1px); }
+    .copy-notice { background: #f0fff4; border: 1px solid rgba(6,199,85,0.3); border-radius: 10px; padding: 14px 18px; text-align: center; margin-top: 14px; display: none; }
+    .copy-notice p { color: #1a7a3e; font-size: 0.87rem; line-height: 1.6; font-weight: 500; }
+    .modal-note { font-size: 0.76rem; color: #ccc; text-align: center; margin-top: 14px; }
+    @media (max-width: 768px) {
+      section { padding: 60px 20px; }
+      .market-content { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; }
+      .flow-step:not(:last-child)::after { display: none; }
+      .flow-steps { gap: 32px; }
+      .town-prices { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .modal-inner { padding: 28px 18px; }
+      .hero-content { text-align:center !important; }
+      .hero-cta-group { align-items:center !important; }
+      .hero-desc { margin-left:auto !important; text-align:center !important; }
+    }
+
+    /* ── Urban: 豊島・北・足立・荒川等 ── */
+    .hero h1 {{ font-size:clamp(2.2rem,5.5vw,3.8rem); font-weight:700; }}
+    .stat-card {{ border-top:4px solid var(--gold); border-radius:4px; }}
+    .area-card {{ border-radius:4px; }}
+    .area-card:hover {{ box-shadow:0 6px 24px rgba(0,0,0,0.1); }}
+    .step-num {{ border-radius:4px; }}
+    .market-point-num {{ border-radius:4px; }}
+    .market-right {{ border-radius:4px; }}
+  </style>
+</head>
+<body class="style-urban">
+
+  <header class="site-header">
+    <div class="logo">GOYOU 御用</div>
+  </header>
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <h1><span class="ward-name">豊島区</span>の不動産を<br>本当の価値で売り抜く</h1>
+      <p class="hero-desc">池袋, 目白, 巣鴨, 駒込など、豊島区の高需要エリアに強い不動産プロが<br>個人売買のサポートから売却戦略の立案まで一貫して対応します。</p>
+      <div class="hero-cta-group">
+        <button class="btn-line-hero" onclick="openLineModal()">
+          <svg class="btn-line-icon" viewBox="0 0 24 24" fill="currentColor"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg></svg>
+          LINEで今すぐ無料相談
+        </button>
+        <p class="hero-note">返信率100% ・ 秘密厳守 ・ 査定無料</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="section-label">AREA CHARACTERISTICS</p>
+      <h2 class="section-title">豊島区の強みと特色</h2>
+      <p class="section-desc">なぜ豊島区の物件は今高く売れるのか。エリアの本質的な価値をお伝えします。</p>
+      <div class="area-grid">
+        <div class="area-card">
+          <span class="area-icon">🏙️</span>
+          <h3>池袋再開発の波及効果</h3>
+          <p>池袋駅周辺の大規模再開発が進行中。新たな商業・文化施設の整備で、エリアのイメージが大きく変わっている。</p>
+        </div>
+        <div class="area-card">
+          <span class="area-icon">📺</span>
+          <h3>アニメ・コンテンツ文化</h3>
+          <p>サンシャインシティ周辺のコンテンツ産業が集積。インバウンド需要も増え、商業物件の収益性が高い。</p>
+        </div>
+        <div class="area-card">
+          <span class="area-icon">🏘️</span>
+          <h3>手頃な価格帯での流動性</h3>
+          <p>23区内で比較的手頃な価格帯で、購入者層が広い。賃貸需要も強く、投資物件としての出口が取りやすい。</p>
+        </div>
+        <div class="area-card">
+          <span class="area-icon">🌏</span>
+          <h3>外国人居住者の多さ</h3>
+          <p>豊島区は外国人居住者比率が高く、外国語対応物件の需要が強い。外資ネットワーク経由の売却が有効。</p>
+        </div>
+        <div class="area-card">
+          <span class="area-icon">🎭</span>
+          <h3>目白・巣鴨の落ち着いた住環境</h3>
+          <p>目白・巣鴨は池袋の喧騒と離れた落ち着いたエリア。富裕層・高齢富裕層の居住需要が安定している。</p>
+        </div>
+        <div class="area-card">
+          <span class="area-icon">🚇</span>
+          <h3>山手線・副都心線の利便性</h3>
+          <p>山手線・副都心線・有楽町線が通り、都内主要エリアへのアクセスが良好。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="market">
+    <div class="container">
+      <p class="section-label">MARKET REPORT</p>
+      <h2 class="section-title">豊島区の物件動向</h2>
+      <p class="section-desc">直近の成約データと外資系ネットワークからの情報を統合した、リアルな市場分析。</p>
+      <div class="market-content">
+        <div class="market-left">
+          <div class="price-badge">
+            <div class="price-label">平均成約価格帯（住宅）</div>
+            <div class="price-value">約80〜160万円 / ㎡</div>
+            <div class="trend-badge" style="background:rgba(6,199,85,0.15);border:1px solid rgba(6,199,85,0.4);color:#4de882;">↑ 上昇</div>
+          </div>
+          <p class="market-detail">池袋周辺の再開発進展で成約価格が上昇トレンド。投資家からの引き合いが増え、高値での売却事例が増えている。</p>
+          <div class="hot-areas">
+            <div class="hot-areas-label">注目エリア</div>
+            <div class="area-tags"><span class="area-tag">池袋</span>
+<span class="area-tag">目白</span>
+<span class="area-tag">巣鴨</span>
+<span class="area-tag">駒込</span></div>
+          </div>
+        </div>
+        <div class="market-right">
+          <h3>📊 売主が知っておくべき市場のポイント</h3>
+          <div class="market-point">
+            <div class="market-point-num">1</div>
+            <div class="market-point-text">
+              <strong>池袋再開発の完成前が最大の売り時</strong>
+              再開発中の「期待値」と「現在の割安感」が同時に存在する今が最大の売り時。完成後は価格が上がり、投資妙味が薄れる。
+            </div>
+          </div>
+          <div class="market-point">
+            <div class="market-point-num">2</div>
+            <div class="market-point-text">
+              <strong>外国人居住者の多さが外資購入者を呼ぶ</strong>
+              豊島区に住む外国人は購入者にもなりやすい。外国語対応・外資ネットワークが有効なエリア。
+            </div>
+          </div>
+          <div class="market-point">
+            <div class="market-point-num">3</div>
+            <div class="market-point-text">
+              <strong>目白・巣鴨は富裕高齢層の相続売却が多い</strong>
+              この層の相続案件は急いで安く売られがちだが、適切な価格設定で大きく高く売れる可能性がある。
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="town-section">
+        <div class="town-section-title">📍 主要エリア別 物件データ</div>
+        <div class="town-tabs">
+        <button class="town-btn  active" onclick="showTown(this,0)">池袋</button>
+        <button class="town-btn" onclick="showTown(this,1)">目白</button>
+        <button class="town-btn" onclick="showTown(this,2)">巣鴨</button>
+        <button class="town-btn" onclick="showTown(this,3)">駒込</button>
+        <button class="town-btn" onclick="showTown(this,4)">雑司が谷</button>
+        </div>
+        <div class="town-panels">
+        <div class="town-panel  active" id="town-0">
+          <div class="town-prices">
+            <div class="price-item">
+              <span class="price-type">MANSION / 区分マンション</span>
+              <span class="price-val">110〜190万円/㎡</span>
+            </div>
+            <div class="price-item">
+              <span class="price-type">LAND / 土地・戸建て</span>
+              <span class="price-val">180〜280万円/㎡</span>
+            </div>
+          </div>
+          <p class="town-feature">大規模再開発進行中で急成長するエリア。外国人居住者が多く、外語対応物件の需要が強い。</p>
+          <div class="town-demand"><span class="demand-label">主な需要層：</span><span class="demand-val">外国人・投資家・単身ビジネス層</span></div>
+          <span class="town-trend">↑ 再開発期待で上昇</span>
+        </div>
+        <div class="town-panel" id="town-1">
+          <div class="town-prices">
+            <div class="price-item">
+              <span class="price-type">MANSION / 区分マンション</span>
+              <span class="price-val">140〜240万円/㎡</span>
+            </div>
+            <div class="price-item">
+              <span class="price-type">LAND / 土地・戸建て</span>
+              <span class="price-val">220〜350万円/㎡</span>
+            </div>
+          </div>
+          <p class="town-feature">学習院大学隣接の落ち着いた高級住宅地。文教ブランドから富裕層・高齢富裕層の定住需要が根強い。</p>
+          <div class="town-demand"><span class="demand-label">主な需要層：</span><span class="demand-val">富裕層・高齢富裕層</span></div>
+          <span class="town-trend">↑ 安定上昇</span>
+        </div>
+        <div class="town-panel" id="town-2">
+          <div class="town-prices">
+            <div class="price-item">
+              <span class="price-type">MANSION / 区分マンション</span>
+              <span class="price-val">120〜200万円/㎡</span>
+            </div>
+            <div class="price-item">
+              <span class="price-type">LAND / 土地・戸建て</span>
+              <span class="price-val">190〜300万円/㎡</span>
+            </div>
+          </div>
+          <p class="town-feature">「おばあちゃんの原宿」として知名度が高い商店街エリア。高齢富裕層の相続案件が多く、価格設定次第で大きく変わる。</p>
+          <div class="town-demand"><span class="demand-label">主な需要層：</span><span class="demand-val">高齢富裕層・相続案件</span></div>
+          <span class="town-trend">↑ 安定</span>
+        </div>
+        <div class="town-panel" id="town-3">
+          <div class="town-prices">
+            <div class="price-item">
+              <span class="price-type">MANSION / 区分マンション</span>
+              <span class="price-val">130〜210万円/㎡</span>
+            </div>
+            <div class="price-item">
+              <span class="price-type">LAND / 土地・戸建て</span>
+              <span class="price-val">200〜310万円/㎡</span>
+            </div>
+          </div>
+          <p class="town-feature">山手線沿線で六義園・旧古河庭園など緑地が豊富。都心への利便性と自然環境を兼備する人気住宅地。</p>
+          <div class="town-demand"><span class="demand-label">主な需要層：</span><span class="demand-val">ファミリー・自然志向層</span></div>
+          <span class="town-trend">↑ 安定上昇</span>
+        </div>
+        <div class="town-panel" id="town-4">
+          <div class="town-prices">
+            <div class="price-item">
+              <span class="price-type">MANSION / 区分マンション</span>
+              <span class="price-val">120〜200万円/㎡</span>
+            </div>
+            <div class="price-item">
+              <span class="price-type">LAND / 土地・戸建て</span>
+              <span class="price-val">190〜290万円/㎡</span>
+            </div>
+          </div>
+          <p class="town-feature">都電荒川線とメトロ副都心線が通る利便性の高いエリア。静かな住環境が再評価されており、需要が増加中。</p>
+          <div class="town-demand"><span class="demand-label">主な需要層：</span><span class="demand-val">ファミリー・若年層</span></div>
+          <span class="town-trend">↑ 上昇</span>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="container">
+      <p class="section-label">WHY CHOOSE US</p>
+      <h2 class="section-title">なぜ私たちが<br>豊島区の物件を高く売れるのか</h2>
+      <div class="about-inner">
+        <div class="about-left">
+          <h3>外資 × 日系オーナーサイドの<br>ハイブリッド経験</h3>
+          <div class="career-item">
+            <div class="career-tag">外資系不動産仲介</div>
+            <p class="career-desc">グローバルな不動産仲介ファームで外国人富裕層・外資ファンドとの取引を多数経験。海外投資家が物件を評価する視点・交渉スタイルを熟知。</p>
+          </div>
+          <div class="career-item">
+            <div class="career-tag">日系オーナー会社</div>
+            <p class="career-desc">日系オーナー企業でリーシング・仕入れ担当として資産価値最大化の実務を経験。オーナー側の意思決定プロセスを内側から理解。</p>
+          </div>
+          <div class="career-item">
+            <div class="career-tag">グローバルネットワーク</div>
+            <p class="career-desc">国内外の投資家・ファンド・エージェントとの継続的なリレーションを保有。一般市場に出回らない買い手候補へのリーチが可能。</p>
+          </div>
+        </div>
+        <div>
+          <ul class="strength-list">
+            <li>
+              <div class="strength-icon">🌐</div>
+              <div class="strength-text">
+                <strong>外資系ネットワークで買い手を広げる</strong>
+                <p>国内仲介が持ちえない外国人富裕層・外資ファンドへのチャンネルを保有。競争のある環境を作り出すことで、売却価格を最大化します。</p>
+              </div>
+            </li>
+            <li>
+              <div class="strength-icon">⚡</div>
+              <div class="strength-text">
+                <strong>交渉力が価格に直結する</strong>
+                <p>外資系仲介で培ったタフな価格交渉力。売主側に立って強交渉を行い、相場より高い条件での成約を実現します。</p>
+              </div>
+            </li>
+            <li>
+              <div class="strength-icon">📋</div>
+              <div class="strength-text">
+                <strong>オーナー目線の戦略立案</strong>
+                <p>資産家・法人オーナーのリーシング・仕入れを担当してきた経験から、売却タイミング・価格設定・見せ方まで資産利益最大化の観点でサポート。</p>
+              </div>
+            </li>
+            <li>
+              <div class="strength-icon">🔒</div>
+              <div class="strength-text">
+                <strong>個人売買で手数料を削減</strong>
+                <p>仲介手数料なしの個人売買スキームをサポート。浮いた費用分だけ売主の手取りが増え、買主にも割安感を提供して成約率を上げます。</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="section-label">HOW IT WORKS</p>
+      <h2 class="section-title">売却サポートの流れ</h2>
+      <p class="section-desc">LINEで相談してから最短1週間で動き出せます。</p>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="step-num"><div class="num">01</div><div class="step-label">STEP</div></div>
+          <h3>LINE無料相談</h3>
+          <p>物件の概要・ご要望をLINEで送るだけ。まずはお気軽にどうぞ。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num"><div class="num">02</div><div class="step-label">STEP</div></div>
+          <h3>無料査定・戦略提案</h3>
+          <p>市場データと外資系ネットワークを踏まえた売却価格・方針を提案。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num"><div class="num">03</div><div class="step-label">STEP</div></div>
+          <h3>買い手候補の選定</h3>
+          <p>国内外のネットワークから最適な買い手候補をリストアップ。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num"><div class="num">04</div><div class="step-label">STEP</div></div>
+          <h3>交渉・条件調整</h3>
+          <p>売主側の最大利益を追求する交渉をサポート。</p>
+        </div>
+        <div class="flow-step">
+          <div class="step-num"><div class="num">05</div><div class="step-label">STEP</div></div>
+          <h3>契約・決済完了</h3>
+          <p>司法書士・税理士との連携で安全・確実にクロージング。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <p class="section-label">FREE CONSULTATION</p>
+      <h2 class="section-title">豊島区の物件、<br>今すぐ売却価値を確認する</h2>
+      <p class="cta-desc">LINEで物件の概要を送るだけ。<br>査定・ご相談は完全無料、秘密厳守で対応します。</p>
+      <button class="btn-line-main" onclick="openLineModal()">
+        <svg class="btn-line-icon-lg" viewBox="0 0 24 24" fill="currentColor"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg></svg>
+        LINEで無料相談する（1タップ）
+      </button>
+      <div class="cta-notes">
+        <span class="cta-note">査定・相談 完全無料</span>
+        <span class="cta-note">秘密厳守</span>
+        <span class="cta-note">売却義務なし</span>
+        <span class="cta-note">当日返信対応</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">GOYOU 御用</div>
+    <p style="margin-bottom:4px;font-size:0.72rem;color:rgba(255,255,255,0.3);">合同会社互陽</p>
+    <p>不動産個人売買サポート ｜ 豊島区エリア専門</p>
+    <p style="margin-top:8px;">© 2025 合同会社互陽. All rights reserved.</p>
+  </footer>
+
+  <button class="float-line" onclick="openLineModal()">
+    <svg class="line-icon-sm" viewBox="0 0 24 24" fill="currentColor"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg></svg>
+    LINEで無料相談
+  </button>
+
+  <!-- LINE問い合わせモーダル -->
+  <div id="line-modal" class="modal-overlay">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header">
+        <div class="modal-line-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg></svg>
+          LINE
+        </div>
+        <h2>無料相談フォーム</h2>
+        <p>入力内容を自動コピーして<br>LINEのトークを開きます</p>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="f-name">お名前 <span class="req">*</span></label>
+          <input class="form-input" id="f-name" type="text" placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-phone">電話番号 <span class="req">*</span></label>
+          <input class="form-input" id="f-phone" type="tel" placeholder="090-0000-0000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="f-type">物件種別</label>
+          <select class="form-select" id="f-type">
+            <option value="">選択してください</option>
+            <option>マンション（区分）</option>
+            <option>一戸建て</option>
+            <option>土地</option>
+            <option>収益物件（一棟）</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-purpose">ご相談内容</label>
+          <select class="form-select" id="f-purpose">
+            <option value="">選択してください</option>
+            <option>売却相談・査定希望</option>
+            <option>査定のみ希望</option>
+            <option>買い替え相談</option>
+            <option>その他・情報収集</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="f-address">物件の所在地</label>
+          <input class="form-input" id="f-address" type="text" placeholder="例：豊島区〇〇町">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-area">面積</label>
+          <input class="form-input" id="f-area" type="text" placeholder="例：75㎡ / 150㎡">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="f-memo">備考・その他（任意）</label>
+        <textarea class="form-textarea" id="f-memo" placeholder="建築年・売却希望時期・その他ご質問など"></textarea>
+      </div>
+      <p class="form-error" id="form-error"></p>
+      <button class="btn-send-line" onclick="sendToLine()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg></svg>
+        LINEで送信する
+      </button>
+      <div class="copy-notice" id="copy-notice">
+        <p>✅ 入力内容をコピーしました！<br>LINEのトークに貼り付けて送信してください。</p>
+      </div>
+      <p class="modal-note">送信内容はクリップボードにコピーされます。LINE画面で貼り付けて送信してください。</p>
+    </div>
+  </div>
+
+  <script>
+    const LINE_URL = "https://lin.ee/YOUR_LINE_ID";
+
+    // 町タブ切り替え
+    function showTown(btn, idx) {
+      document.querySelectorAll('.town-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.town-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      var panel = document.getElementById('town-' + idx);
+      if (panel) panel.classList.add('active');
+    }
+
+    // モーダル制御
+    function openLineModal() {
+      document.getElementById('line-modal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('line-modal').style.display = 'none';
+      document.body.style.overflow = '';
+      document.getElementById('copy-notice').style.display = 'none';
+      document.getElementById('form-error').textContent = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // モーダル背景クリックで閉じる
+    document.getElementById('line-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    // 売却サポートの流れが見えたらモーダルを自動表示（1回のみ）
+    var flowShown = false;
+    var flowSection = document.querySelector('.flow-steps');
+    if (flowSection && window.IntersectionObserver) {
+      var flowObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !flowShown) {
+            flowShown = true;
+            flowObserver.disconnect();
+            setTimeout(openLineModal, 600);
+          }
+        });
+      }, { threshold: 0.3 });
+      flowObserver.observe(flowSection);
+    }
+
+    // LINE送信処理
+    function sendToLine() {
+      var name    = document.getElementById('f-name').value.trim();
+      var phone   = document.getElementById('f-phone').value.trim();
+      var ptype   = document.getElementById('f-type').value;
+      var address = document.getElementById('f-address').value.trim();
+      var area    = document.getElementById('f-area').value.trim();
+      var purpose = document.getElementById('f-purpose').value;
+      var memo    = document.getElementById('f-memo').value.trim();
+      var errEl   = document.getElementById('form-error');
+
+      if (!name || !phone) {
+        errEl.textContent = '⚠ お名前と電話番号は必須です。';
+        return;
+      }
+      errEl.textContent = '';
+
+      var lines = ['【売却・不動産相談】', '━━━━━━━━━━',
+        'お名前：' + name,
+        '電話番号：' + phone,
+        '物件種別：' + (ptype || '未選択'),
+      ];
+      if (address) lines.push('物件所在地：' + address);
+      if (area)    lines.push('面積：' + area);
+      lines.push('ご相談内容：' + (purpose || '未選択'));
+      if (memo)    lines.push('備考：' + memo);
+      lines.push('━━━━━━━━━━');
+      var msg = lines.join('\n');
+
+      var notice = document.getElementById('copy-notice');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(msg).then(function() {
+          notice.style.display = 'block';
+          setTimeout(function() { window.open(LINE_URL, '_blank'); }, 600);
+        }).catch(function() {
+          window.open(LINE_URL, '_blank');
+        });
+      } else {
+        window.open(LINE_URL, '_blank');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+__pycache__/
+*.pyc
+.DS_Store
+# 旧形式HTMLは除外
+adachi.html
+arakawa.html
+bunkyo.html
+chiyoda.html
+chuo.html
+edogawa.html
+itabashi.html
+katsushika.html
+kita.html
+koto.html
+meguro.html
+minato.html
+nakano.html
+nerima.html
+ota.html
+setagaya.html
+shibuya.html
+shinagawa.html
+shinjuku.html
+suginami.html
+sumida.html
+taito.html
+toshima.html
