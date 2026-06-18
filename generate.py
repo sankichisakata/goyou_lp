@@ -7,8 +7,8 @@ from towns_data import TOWNS_DATA
 from translations import WARD_TRANSLATIONS, TREND_MAP
 
 LINE_ID = "YOUR_LINE_ID"  # ← ここをLINEのIDに変更
-COMPANY_NAME = "合同会社互陽"
-SITE_NAME = "GOYOU 御用"
+COMPANY_NAME = "株式会社マリナ"
+SITE_NAME = "ディープエステート"
 
 WARD_CODES = {
     "chiyoda": "cy", "chuo": "cu", "minato": "mn", "shinjuku": "sj",
@@ -1736,7 +1736,7 @@ def make_html(ward):
       <button class="company-close" onclick="closeCompany()">✕</button>
       <h2 class="company-heading">運営会社</h2>
       <table class="company-table">
-        <tr><th>会社名</th><td>合同会社互陽</td></tr>
+        <tr><th>会社名</th><td>株式会社マリナ</td></tr>
         <tr><th>住所</th><td>東京都港区赤坂2丁目1番1号</td></tr>
         <tr><th>資本金</th><td>100万円</td></tr>
         <tr><th>代表社員</th><td>石塚 信</td></tr>
@@ -1827,7 +1827,7 @@ def make_manage_html():
 <body>
   <header class="page-header">
     <div>
-      <div class="page-title">GOYOU 御用 — LP 管理ページ</div>
+      <div class="page-title">ディープエステート — LP 管理ページ</div>
       <div class="page-sub">東京23区 個別ランディングページ一覧</div>
     </div>
     <div class="count-badge">23区</div>
