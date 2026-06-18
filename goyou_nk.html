@@ -21,10 +21,17 @@
     .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 12px 28px; display: flex; justify-content: space-between; align-items: center; }
     .site-header .logo { color: var(--navy); font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; }
     .line-icon { width: 18px; height: 18px; }
-    .lang-switcher { display: flex; gap: 4px; }
-    .lang-btn { background: transparent; border: 1px solid var(--gray-light); color: var(--text-sub); border-radius: 4px; padding: 4px 10px; font-size: 0.72rem; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; }
-    .lang-btn:hover { border-color: var(--navy); color: var(--navy); }
-    .lang-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; font-weight: 700; }
+    /* ── HAMBURGER MENU ── */
+    .hamburger { background: none; border: none; cursor: pointer; padding: 6px; display: flex; flex-direction: column; gap: 5px; z-index: 110; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.28s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-menu { position: absolute; top: calc(100% + 6px); right: 16px; background: rgba(255,255,255,0.98); border: 1px solid var(--gray-light); border-radius: 10px; padding: 8px; display: none; flex-direction: column; gap: 4px; box-shadow: 0 6px 24px rgba(0,0,0,0.1); min-width: 90px; }
+    .nav-menu.open { display: flex; }
+    .lang-btn { background: transparent; border: none; color: var(--text-sub); border-radius: 6px; padding: 7px 14px; font-size: 0.8rem; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; text-align: center; width: 100%; letter-spacing: 0.04em; }
+    .lang-btn:hover { background: var(--gray-bg); color: var(--navy); }
+    .lang-btn.active { background: var(--navy); color: #fff; font-weight: 700; }
     /* ── HERO ── */
     .hero { min-height: 100vh; background: url("https://images.unsplash.com/photo-1649671317724-17407ad018bd?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.72); }
@@ -165,14 +172,32 @@
     .copy-notice p { color: #1a7a3e; font-size: 0.87rem; line-height: 1.6; font-weight: 500; }
     .modal-note { font-size: 0.76rem; color: #ccc; text-align: center; margin-top: 14px; }
     @media (max-width: 768px) {
-      section { padding: 60px 20px; }
+      section { padding: 48px 18px; }
+      .hero { padding: 80px 18px 56px; min-height: 85vh; }
+      .hero h1 { font-size: 1.55rem !important; line-height: 1.4; margin-bottom: 14px; }
+      .hero-desc { font-size: 0.8rem; margin-bottom: 30px; }
+      .btn-line-hero { padding: 13px 26px; font-size: 0.88rem; gap: 8px; }
+      .btn-line-icon { width: 20px; height: 20px; }
+      .hero-note { font-size: 0.72rem; }
+      .section-title { font-size: 1.3rem !important; }
+      .section-desc { font-size: 0.85rem; }
+      .stat-num { font-size: 1.8rem; }
+      .area-grid { grid-template-columns: 1fr; gap: 12px; }
+      .area-card { padding: 18px; }
+      .area-icon { font-size: 1.6rem; margin-bottom: 10px; }
       .market-content { grid-template-columns: 1fr; }
       .about-inner { grid-template-columns: 1fr; }
       .flow-step:not(:last-child)::after { display: none; }
-      .flow-steps { gap: 32px; }
+      .flow-steps { gap: 24px; }
+      .flow-step { padding: 16px; }
       .town-prices { grid-template-columns: 1fr; }
+      .btn-line-main { padding: 15px 32px; font-size: 0.96rem; gap: 8px; }
+      .btn-line-icon-lg { width: 20px; height: 20px; }
+      .cta-notes { gap: 12px; }
+      .cta-note { font-size: 0.76rem; }
+      .float-line { padding: 11px 18px; font-size: 0.8rem; bottom: 18px; right: 14px; }
       .form-row { grid-template-columns: 1fr; }
-      .modal-inner { padding: 28px 18px; }
+      .modal-inner { padding: 24px 16px; }
       .hero-content { text-align:center !important; }
       .hero-cta-group { align-items:center !important; }
       .hero-desc { margin-left:auto !important; text-align:center !important; }
@@ -200,11 +225,14 @@
 
   <header class="site-header">
     <div class="logo">GOYOU 御用</div>
-    <div class="lang-switcher">
-      <button class="lang-btn active" data-lang="ja" onclick="setLang('ja')">JP</button>
-      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
-    </div>
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="言語切替">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-menu" id="nav-menu">
+      <button class="lang-btn active" data-lang="ja" onclick="setLang('ja');closeMenu()">JP</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en');closeMenu()">EN</button>
+      <button class="lang-btn" data-lang="zh" onclick="setLang('zh');closeMenu()">中文</button>
+    </nav>
   </header>
 
   <section class="hero">
@@ -500,7 +528,7 @@
         <svg class="btn-line-icon-lg" viewBox="0 0 24 24" fill="currentColor"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
       </svg></svg>
-        <span data-i18n="cta_btn">LINEで無料相談する（1タップ）</span>
+        <span data-i18n="cta_btn">LINEで無料相談する</span>
       </button>
       <div class="cta-notes">
         <span class="cta-note" data-i18n="cta_note1">査定・相談 完全無料</span>
@@ -743,7 +771,7 @@
         cta_label: 'FREE CONSULTATION',
         cta_title: 'Your ' + WARD_EN + ' Property —<br>Check Its True Value Today',
         cta_desc: 'Just send your property details via LINE.<br>Free and fully confidential.',
-        cta_btn: 'Free LINE Consultation (1 tap)',
+        cta_btn: 'Free LINE Consultation',
         cta_note1: 'Valuation · Free',
         cta_note2: 'Confidential',
         cta_note3: 'No obligation',
@@ -813,7 +841,7 @@
         cta_label: '免费咨询',
         cta_title: WARD_NAME_JA + '的房产，<br>立即确认出售价值',
         cta_desc: '只需通过LINE发送房产概要。<br>估价·咨询完全免费，严格保密。',
-        cta_btn: 'LINE免费咨询（一键操作）',
+        cta_btn: 'LINE免费咨询',
         cta_note1: '估价·咨询 完全免费',
         cta_note2: '严格保密',
         cta_note3: '无出售义务',
@@ -888,6 +916,25 @@
       var saved = localStorage.getItem('goyou_lang');
       if (saved && saved !== 'ja') setLang(saved);
     } catch(e) {}
+
+    // ハンバーガーメニュー
+    function toggleMenu() {
+      var btn = document.getElementById('hamburger-btn');
+      var nav = document.getElementById('nav-menu');
+      var isOpen = nav.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+    }
+    function closeMenu() {
+      var btn = document.getElementById('hamburger-btn');
+      var nav = document.getElementById('nav-menu');
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+    }
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#hamburger-btn') && !e.target.closest('#nav-menu')) {
+        closeMenu();
+      }
+    });
   </script>
 </body>
 </html>

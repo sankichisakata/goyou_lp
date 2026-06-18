@@ -917,7 +917,7 @@ def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
         cta_label: 'FREE CONSULTATION',
         cta_title: 'Your ' + WARD_EN + ' Property —<br>Check Its True Value Today',
         cta_desc: 'Just send your property details via LINE.<br>Free and fully confidential.',
-        cta_btn: 'Free LINE Consultation (1 tap)',
+        cta_btn: 'Free LINE Consultation',
         cta_note1: 'Valuation · Free',
         cta_note2: 'Confidential',
         cta_note3: 'No obligation',
@@ -987,7 +987,7 @@ def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
         cta_label: '免费咨询',
         cta_title: WARD_NAME_JA + '的房产，<br>立即确认出售价值',
         cta_desc: '只需通过LINE发送房产概要。<br>估价·咨询完全免费，严格保密。',
-        cta_btn: 'LINE免费咨询（一键操作）',
+        cta_btn: 'LINE免费咨询',
         cta_note1: '估价·咨询 完全免费',
         cta_note2: '严格保密',
         cta_note3: '无出售义务',
@@ -1062,6 +1062,25 @@ def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
       var saved = localStorage.getItem('goyou_lang');
       if (saved && saved !== 'ja') setLang(saved);
     }} catch(e) {{}}
+
+    // ハンバーガーメニュー
+    function toggleMenu() {{
+      var btn = document.getElementById('hamburger-btn');
+      var nav = document.getElementById('nav-menu');
+      var isOpen = nav.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+    }}
+    function closeMenu() {{
+      var btn = document.getElementById('hamburger-btn');
+      var nav = document.getElementById('nav-menu');
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+    }}
+    document.addEventListener('click', function(e) {{
+      if (!e.target.closest('#hamburger-btn') && !e.target.closest('#nav-menu')) {{
+        closeMenu();
+      }}
+    }});
   </script>"""
 
 
@@ -1136,10 +1155,17 @@ def make_html(ward):
     .site-header {{ position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 12px 28px; display: flex; justify-content: space-between; align-items: center; }}
     .site-header .logo {{ color: var(--navy); font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; }}
     .line-icon {{ width: 18px; height: 18px; }}
-    .lang-switcher {{ display: flex; gap: 4px; }}
-    .lang-btn {{ background: transparent; border: 1px solid var(--gray-light); color: var(--text-sub); border-radius: 4px; padding: 4px 10px; font-size: 0.72rem; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; }}
-    .lang-btn:hover {{ border-color: var(--navy); color: var(--navy); }}
-    .lang-btn.active {{ background: var(--navy); border-color: var(--navy); color: #fff; font-weight: 700; }}
+    /* ── HAMBURGER MENU ── */
+    .hamburger {{ background: none; border: none; cursor: pointer; padding: 6px; display: flex; flex-direction: column; gap: 5px; z-index: 110; }}
+    .hamburger span {{ display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all 0.28s; }}
+    .hamburger.open span:nth-child(1) {{ transform: translateY(7px) rotate(45deg); }}
+    .hamburger.open span:nth-child(2) {{ opacity: 0; transform: scaleX(0); }}
+    .hamburger.open span:nth-child(3) {{ transform: translateY(-7px) rotate(-45deg); }}
+    .nav-menu {{ position: absolute; top: calc(100% + 6px); right: 16px; background: rgba(255,255,255,0.98); border: 1px solid var(--gray-light); border-radius: 10px; padding: 8px; display: none; flex-direction: column; gap: 4px; box-shadow: 0 6px 24px rgba(0,0,0,0.1); min-width: 90px; }}
+    .nav-menu.open {{ display: flex; }}
+    .lang-btn {{ background: transparent; border: none; color: var(--text-sub); border-radius: 6px; padding: 7px 14px; font-size: 0.8rem; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; text-align: center; width: 100%; letter-spacing: 0.04em; }}
+    .lang-btn:hover {{ background: var(--gray-bg); color: var(--navy); }}
+    .lang-btn.active {{ background: var(--navy); color: #fff; font-weight: 700; }}
     /* ── HERO ── */
     .hero {{ min-height: 100vh; background: url("{hero_img}?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }}
     .hero::before {{ content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.72); }}
@@ -1280,14 +1306,32 @@ def make_html(ward):
     .copy-notice p {{ color: #1a7a3e; font-size: 0.87rem; line-height: 1.6; font-weight: 500; }}
     .modal-note {{ font-size: 0.76rem; color: #ccc; text-align: center; margin-top: 14px; }}
     @media (max-width: 768px) {{
-      section {{ padding: 60px 20px; }}
+      section {{ padding: 48px 18px; }}
+      .hero {{ padding: 80px 18px 56px; min-height: 85vh; }}
+      .hero h1 {{ font-size: 1.55rem !important; line-height: 1.4; margin-bottom: 14px; }}
+      .hero-desc {{ font-size: 0.8rem; margin-bottom: 30px; }}
+      .btn-line-hero {{ padding: 13px 26px; font-size: 0.88rem; gap: 8px; }}
+      .btn-line-icon {{ width: 20px; height: 20px; }}
+      .hero-note {{ font-size: 0.72rem; }}
+      .section-title {{ font-size: 1.3rem !important; }}
+      .section-desc {{ font-size: 0.85rem; }}
+      .stat-num {{ font-size: 1.8rem; }}
+      .area-grid {{ grid-template-columns: 1fr; gap: 12px; }}
+      .area-card {{ padding: 18px; }}
+      .area-icon {{ font-size: 1.6rem; margin-bottom: 10px; }}
       .market-content {{ grid-template-columns: 1fr; }}
       .about-inner {{ grid-template-columns: 1fr; }}
       .flow-step:not(:last-child)::after {{ display: none; }}
-      .flow-steps {{ gap: 32px; }}
+      .flow-steps {{ gap: 24px; }}
+      .flow-step {{ padding: 16px; }}
       .town-prices {{ grid-template-columns: 1fr; }}
+      .btn-line-main {{ padding: 15px 32px; font-size: 0.96rem; gap: 8px; }}
+      .btn-line-icon-lg {{ width: 20px; height: 20px; }}
+      .cta-notes {{ gap: 12px; }}
+      .cta-note {{ font-size: 0.76rem; }}
+      .float-line {{ padding: 11px 18px; font-size: 0.8rem; bottom: 18px; right: 14px; }}
       .form-row {{ grid-template-columns: 1fr; }}
-      .modal-inner {{ padding: 28px 18px; }}
+      .modal-inner {{ padding: 24px 16px; }}
       .hero-content {{ text-align:center !important; }}
       .hero-cta-group {{ align-items:center !important; }}
       .hero-desc {{ margin-left:auto !important; text-align:center !important; }}
@@ -1299,11 +1343,14 @@ def make_html(ward):
 
   <header class="site-header">
     <div class="logo">{SITE_NAME}</div>
-    <div class="lang-switcher">
-      <button class="lang-btn active" data-lang="ja" onclick="setLang('ja')">JP</button>
-      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
-    </div>
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()" aria-label="言語切替">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-menu" id="nav-menu">
+      <button class="lang-btn active" data-lang="ja" onclick="setLang('ja');closeMenu()">JP</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en');closeMenu()">EN</button>
+      <button class="lang-btn" data-lang="zh" onclick="setLang('zh');closeMenu()">中文</button>
+    </nav>
   </header>
 
   <section class="hero">
@@ -1457,7 +1504,7 @@ def make_html(ward):
       <p class="cta-desc" data-i18n-html="cta_desc">LINEで物件の概要を送るだけ。<br>査定・ご相談は完全無料、秘密厳守で対応します。</p>
       <button class="btn-line-main" onclick="openLineModal()">
         <svg class="btn-line-icon-lg" viewBox="0 0 24 24" fill="currentColor">{line_svg}</svg>
-        <span data-i18n="cta_btn">LINEで無料相談する（1タップ）</span>
+        <span data-i18n="cta_btn">LINEで無料相談する</span>
       </button>
       <div class="cta-notes">
         <span class="cta-note" data-i18n="cta_note1">査定・相談 完全無料</span>
