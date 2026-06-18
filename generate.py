@@ -4,6 +4,7 @@
 import os
 import json
 from towns_data import TOWNS_DATA
+from translations import WARD_TRANSLATIONS, TREND_MAP
 
 LINE_ID = "YOUR_LINE_ID"  # ← ここをLINEのIDに変更
 COMPANY_NAME = "合同会社互陽"
@@ -736,7 +737,7 @@ def make_towns_html(towns):
     if not towns:
         return ""
     tabs = "\n".join([
-        f'        <button class="town-btn{"  active" if i == 0 else ""}" onclick="showTown(this,{i})">{t["name"]}</button>'
+        f'        <button class="town-btn{"  active" if i == 0 else ""}" onclick="showTown(this,{i})" data-ja="{t["name"]}" data-en="{t.get("name_en", t["name"])}" data-zh="{t["name"]}">{t["name"]}</button>'
         for i, t in enumerate(towns)
     ])
     panels = "\n".join([
@@ -751,14 +752,14 @@ def make_towns_html(towns):
               <span class="price-val">{t["land"]}</span>
             </div>
           </div>
-          <p class="town-feature">{t["feature"]}</p>
-          <div class="town-demand"><span class="demand-label">主な需要層：</span><span class="demand-val">{t["demand"]}</span></div>
-          <span class="town-trend">↑ {t["trend"]}</span>
+          <p class="town-feature" data-ja="{t['feature']}" data-en="{t.get('feature_en', t['feature'])}" data-zh="{t.get('feature_zh', t['feature'])}">{t["feature"]}</p>
+          <div class="town-demand"><span class="demand-label" data-ja="主な需要層：" data-en="Primary Demand:" data-zh="主要需求层：">主な需要層：</span><span class="demand-val" data-ja="{t['demand']}" data-en="{t.get('demand_en', t['demand'])}" data-zh="{t.get('demand_zh', t['demand'])}">{t["demand"]}</span></div>
+          <span class="town-trend" data-ja="↑ {t['trend']}" data-en="↑ {TREND_MAP.get(t['trend'], (t['trend'], t['trend']))[0]}" data-zh="↑ {TREND_MAP.get(t['trend'], (t['trend'], t['trend']))[1]}">↑ {t["trend"]}</span>
         </div>"""
         for i, t in enumerate(towns)
     ])
     return f"""      <div class="town-section">
-        <div class="town-section-title">📍 主要エリア別 物件データ</div>
+        <div class="town-section-title" data-i18n="towns_title">📍 主要エリア別 物件データ</div>
         <div class="town-tabs">
 {tabs}
         </div>
@@ -768,12 +769,41 @@ def make_towns_html(towns):
       </div>"""
 
 
-def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
+def make_js(line_id, ward_name="", ward_en="", hot_areas="", hot_areas_en="",
+            char_trans=None, mp_trans=None):
+    char_trans = char_trans or []
+    mp_trans = mp_trans or []
+
+    # Build I18N char/mp keys for en/zh
+    def build_char_keys(lang_idx):
+        lines = []
+        for i, ct in enumerate(char_trans):
+            title = ct[lang_idx * 2].replace('"', '\\"').replace('\n', ' ')
+            desc  = ct[lang_idx * 2 + 1].replace('"', '\\"').replace('\n', ' ')
+            lines.append(f'        char{i}_title: "{title}",')
+            lines.append(f'        char{i}_desc: "{desc}",')
+        return "\n".join(lines)
+
+    def build_mp_keys(lang_idx):
+        lines = []
+        for i, mp in enumerate(mp_trans):
+            title = mp[lang_idx * 2].replace('"', '\\"').replace('\n', ' ')
+            desc  = mp[lang_idx * 2 + 1].replace('"', '\\"').replace('\n', ' ')
+            lines.append(f'        mp{i}_title: "{title}",')
+            lines.append(f'        mp{i}_desc: "{desc}",')
+        return "\n".join(lines)
+
+    en_char_keys = build_char_keys(0)
+    zh_char_keys = build_char_keys(1)
+    en_mp_keys   = build_mp_keys(0)
+    zh_mp_keys   = build_mp_keys(1)
+
     return f"""  <script>
     const LINE_URL = "https://lin.ee/{line_id}";
     const WARD_NAME_JA = "{ward_name}";
     const WARD_EN = "{ward_en}";
     const HOT_AREAS = "{hot_areas}";
+    const HOT_AREAS_EN = "{hot_areas_en}";
 
     // 町タブ切り替え
     function showTown(btn, idx) {{
@@ -867,7 +897,7 @@ def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
     const I18N = {{
       en: {{
         hero_title: '<span class="ward-name">' + WARD_EN + '</span><br>Maximize Your Property Value',
-        hero_desc: HOT_AREAS + ' and surrounding high-demand areas — our specialists handle private property sales and strategy end to end.',
+        hero_desc: HOT_AREAS_EN + ' and surrounding high-demand areas — our specialists handle private property sales and strategy end to end.',
         hero_btn: 'Free LINE Consultation',
         hero_note: '100% response · Confidential · Free valuation',
         area_label: 'AREA CHARACTERISTICS',
@@ -934,10 +964,14 @@ def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
         btn_send: 'Send via LINE',
         modal_note: 'Content will be copied to clipboard. Paste in LINE to send.',
         float_btn: 'Free LINE Chat',
+        towns_title: '📍 Property Data by Key Area',
+        demand_label: 'Primary Demand:',
+{en_char_keys}
+{en_mp_keys}
       }},
       zh: {{
         hero_title: '<span class="ward-name">' + WARD_EN + '</span><br>实现不动产最高价值出售',
-        hero_desc: HOT_AREAS + '等' + WARD_NAME_JA + '高需求地区——专业团队提供私人买卖全程支持，从战略制定到最终成交一站到底。',
+        hero_desc: HOT_AREAS_EN + '等' + WARD_EN + '高需求地区——专业团队提供私人买卖全程支持，从战略制定到最终成交一站到底。',
         hero_btn: 'LINE免费咨询',
         hero_note: '100%回复率 · 严格保密 · 免费估价',
         area_label: '区域特色',
@@ -1004,6 +1038,10 @@ def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
         btn_send: '通过LINE发送',
         modal_note: '内容将复制到剪贴板，请在LINE中粘贴发送。',
         float_btn: 'LINE免费咨询',
+        towns_title: '📍 主要地区房产数据',
+        demand_label: '主要需求层：',
+{zh_char_keys}
+{zh_mp_keys}
       }}
     }};
 
@@ -1028,6 +1066,13 @@ def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
           if (el.dataset.origPh !== undefined) el.placeholder = el.dataset.origPh;
         }});
         document.documentElement.lang = 'ja';
+        // Restore data-en/data-zh elements to Japanese
+        document.querySelectorAll('[data-ja]').forEach(function(el) {{
+          if (el.dataset.ja !== undefined) el.textContent = el.dataset.ja;
+        }});
+        // Restore price display
+        var priceEl = document.getElementById('price-jpy-display');
+        if (priceEl && priceEl.dataset.jpyText) priceEl.textContent = priceEl.dataset.jpyText;
         return;
       }}
       var t = I18N[lang];
@@ -1044,8 +1089,44 @@ def make_js(line_id, ward_name="", ward_en="", hot_areas=""):
         var key = el.dataset.i18nPh;
         if (t[key] !== undefined) el.placeholder = t[key];
       }});
+      // data-en / data-zh direct attributes
+      document.querySelectorAll('[data-en]').forEach(function(el) {{
+        var val = lang === 'en' ? el.dataset.en : el.dataset.zh;
+        if (val !== undefined) el.textContent = val;
+      }});
+      // Price: show USD when EN/ZH
+      var priceEl = document.getElementById('price-jpy-display');
+      if (priceEl && priceEl.dataset.jpyText) {{
+        var usdRate = window._usdRate || null;
+        if (usdRate) {{
+          priceEl.textContent = convertJpyToUsd(priceEl.dataset.jpyText, usdRate);
+        }}
+      }}
       document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
     }}
+
+    // JPY → USD conversion
+    function convertJpyToUsd(text, rate) {{
+      // Handles patterns like "150〜250万円/㎡", "500万円〜/㎡"
+      return text.replace(/([\d,]+(?:\.[\d]+)?)(万円)/g, function(m, num, _) {{
+        var jpy = parseFloat(num.replace(/,/g, '')) * 10000;
+        var usd = Math.round(jpy * rate / 100) * 100; // round to 100
+        return '$' + usd.toLocaleString();
+      }});
+    }}
+
+    // Fetch live exchange rate (JPY→USD)
+    (function() {{
+      try {{
+        fetch('https://open.er-api.com/v6/latest/JPY')
+          .then(function(r) {{ return r.json(); }})
+          .then(function(data) {{
+            if (data && data.rates && data.rates.USD) {{
+              window._usdRate = data.rates.USD;
+            }}
+          }}).catch(function() {{}});
+      }} catch(e) {{}}
+    }})();
 
     // placeholder元値を保存
     document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {{
@@ -1119,29 +1200,41 @@ def make_html(ward):
     area_en = ward["area_en"]
     hero_deco = ""
     towns_html = make_towns_html(ward.get("towns", []))
+    wt = WARD_TRANSLATIONS.get(ward["id"], {})
+    hot_areas_en_list = wt.get("hot_areas_en", ward["hot_areas"])
+    char_trans = wt.get("chars", [])
+    mp_trans   = wt.get("mps", [])
     characteristics_html = "\n".join([
         f"""        <div class="area-card">
           <span class="area-icon">{c['icon']}</span>
-          <h3>{c['title']}</h3>
-          <p>{c['desc']}</p>
+          <h3 data-i18n="char{i}_title">{c['title']}</h3>
+          <p data-i18n="char{i}_desc">{c['desc']}</p>
         </div>"""
-        for c in ward["characteristics"]
+        for i, c in enumerate(ward["characteristics"])
     ])
-    hot_areas_html = "\n".join([f'<span class="area-tag">{a}</span>' for a in ward["hot_areas"]])
+    hot_areas_en_map = dict(zip(ward["hot_areas"], hot_areas_en_list))
+    hot_areas_html = "\n".join([
+        f'<span class="area-tag" data-ja="{a}" data-en="{hot_areas_en_map.get(a, a)}" data-zh="{hot_areas_en_map.get(a, a)}">{a}</span>'
+        for a in ward["hot_areas"]
+    ])
     market_points_html = "\n".join([
         f"""          <div class="market-point">
             <div class="market-point-num">{i+1}</div>
             <div class="market-point-text">
-              <strong>{p[0]}</strong>
-              {p[1]}
+              <strong data-i18n="mp{i}_title">{p[0]}</strong>
+              <span data-i18n="mp{i}_desc">{p[1]}</span>
             </div>
           </div>"""
         for i, p in enumerate(ward["market_points"])
     ])
+    trend_detail_en = wt.get("trend_detail_en", "")
+    trend_detail_zh = wt.get("trend_detail_zh", "")
     trend_badge = make_trend_badge(ward["trend"], ward["trend_color"])
     line_svg = LINE_ICON_SVG
-    hot_areas_str = ', '.join(ward['hot_areas'])
-    js_block = make_js(LINE_ID, name, area_en, hot_areas_str)
+    hot_areas_str    = ', '.join(ward['hot_areas'])
+    hot_areas_en_str = ', '.join(hot_areas_en_list[:4])
+    js_block = make_js(LINE_ID, name, area_en, hot_areas_str, hot_areas_en_str,
+                       char_trans, mp_trans)
 
     return f"""<!DOCTYPE html>
 <html lang="ja">
@@ -1427,10 +1520,10 @@ def make_html(ward):
         <div class="market-left">
           <div class="price-badge">
             <div class="price-label" data-i18n="price_label">平均成約価格帯（住宅）</div>
-            <div class="price-value">{ward['price']}</div>
+            <div class="price-value" id="price-jpy-display" data-jpy-text="{ward['price']}">{ward['price']}</div>
             {trend_badge}
           </div>
-          <p class="market-detail">{ward['trend_detail']}</p>
+          <p class="market-detail" data-ja="{ward['trend_detail']}" data-en="{trend_detail_en}" data-zh="{trend_detail_zh}">{ward['trend_detail']}</p>
           <div class="hot-areas">
             <div class="hot-areas-label" data-i18n="hot_label">注目エリア</div>
             <div class="area-tags">{hot_areas_html}</div>
