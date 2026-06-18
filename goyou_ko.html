@@ -7,6 +7,7 @@
   <meta name="description" content="江東区の不動産売却を、外資系不動産会社出身プロが徹底サポート。豊洲, 有明, 東雲, 門前仲町の物件売却実績多数。まずはLINEで無料相談。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script defer src="/_vercel/insights/script.js"></script>
   <style>
     :root {
       --navy: #061620; --navy-light: #0c2230;
@@ -19,9 +20,11 @@
     /* ── HEADER ── */
     .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.08); padding: 12px 28px; display: flex; justify-content: space-between; align-items: center; }
     .site-header .logo { color: var(--navy); font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.04em; }
-    .header-line-btn { background: #06C755; color: white; border: none; border-radius: 24px; padding: 8px 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; text-decoration: none; transition: all 0.2s; font-family: 'Noto Sans JP', sans-serif; }
-    .header-line-btn:hover { opacity: 0.85; transform: translateY(-1px); }
     .line-icon { width: 18px; height: 18px; }
+    .lang-switcher { display: flex; gap: 4px; }
+    .lang-btn { background: transparent; border: 1px solid var(--gray-light); color: var(--text-sub); border-radius: 4px; padding: 4px 10px; font-size: 0.72rem; cursor: pointer; font-family: 'Noto Sans JP', sans-serif; transition: all 0.15s; }
+    .lang-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .lang-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; font-weight: 700; }
     /* ── HERO ── */
     .hero { min-height: 100vh; background: url("https://images.unsplash.com/photo-1741097574041-d70d3fe6a3ab?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.72); }
@@ -189,30 +192,35 @@
 
   <header class="site-header">
     <div class="logo">GOYOU 御用</div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ja" onclick="setLang('ja')">JP</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+    </div>
   </header>
 
   <section class="hero">
 
     <div class="hero-content">
-      <h1><span class="ward-name">江東区</span>の不動産を<br>本当の価値で売り抜く</h1>
-      <p class="hero-desc">豊洲, 有明, 東雲, 門前仲町など、江東区の高需要エリアに強い不動産プロが<br>個人売買のサポートから売却戦略の立案まで一貫して対応します。</p>
+      <h1 data-i18n-html="hero_title"><span class="ward-name">江東区</span>の不動産を<br>本当の価値で売り抜く</h1>
+      <p class="hero-desc" data-i18n-html="hero_desc">豊洲, 有明, 東雲, 門前仲町など、江東区の高需要エリアに強い不動産プロが<br>個人売買のサポートから売却戦略の立案まで一貫して対応します。</p>
       <div class="hero-cta-group">
         <button class="btn-line-hero" onclick="openLineModal()">
           <svg class="btn-line-icon" viewBox="0 0 24 24" fill="currentColor"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
       </svg></svg>
-          LINEで今すぐ無料相談
+          <span data-i18n="hero_btn">LINEで今すぐ無料相談</span>
         </button>
-        <p class="hero-note">返信率100% ・ 秘密厳守 ・ 査定無料</p>
+        <p class="hero-note" data-i18n="hero_note">返信率100% ・ 秘密厳守 ・ 査定無料</p>
       </div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <p class="section-label">AREA CHARACTERISTICS</p>
-      <h2 class="section-title">江東区の強みと特色</h2>
-      <p class="section-desc">なぜ江東区の物件は今高く売れるのか。エリアの本質的な価値をお伝えします。</p>
+      <p class="section-label" data-i18n="area_label">AREA CHARACTERISTICS</p>
+      <h2 class="section-title" data-i18n-html="area_title">江東区の強みと特色</h2>
+      <p class="section-desc" data-i18n-html="area_desc">なぜ江東区の物件は今高く売れるのか。エリアの本質的な価値をお伝えします。</p>
       <div class="area-grid">
         <div class="area-card">
           <span class="area-icon">🏗️</span>
@@ -250,19 +258,19 @@
 
   <section class="market">
     <div class="container">
-      <p class="section-label">MARKET REPORT</p>
-      <h2 class="section-title">江東区の物件動向</h2>
-      <p class="section-desc">直近の成約データと外資系ネットワークからの情報を統合した、リアルな市場分析。</p>
+      <p class="section-label" data-i18n="market_label">MARKET REPORT</p>
+      <h2 class="section-title" data-i18n-html="market_title">江東区の物件動向</h2>
+      <p class="section-desc" data-i18n="market_desc">直近の成約データと外資系ネットワークからの情報を統合した、リアルな市場分析。</p>
       <div class="market-content">
         <div class="market-left">
           <div class="price-badge">
-            <div class="price-label">平均成約価格帯（住宅）</div>
+            <div class="price-label" data-i18n="price_label">平均成約価格帯（住宅）</div>
             <div class="price-value">約100〜200万円 / ㎡</div>
             <div class="trend-badge" style="background:rgba(6,199,85,0.15);border:1px solid rgba(6,199,85,0.4);color:#4de882;">↑ 上昇</div>
           </div>
           <p class="market-detail">豊洲・有明・東雲エリアで新築・中古ともに成約価格が上昇。買い替え需要も活発で、流動性が高い。</p>
           <div class="hot-areas">
-            <div class="hot-areas-label">注目エリア</div>
+            <div class="hot-areas-label" data-i18n="hot_label">注目エリア</div>
             <div class="area-tags"><span class="area-tag">豊洲</span>
 <span class="area-tag">有明</span>
 <span class="area-tag">東雲</span>
@@ -270,7 +278,7 @@
           </div>
         </div>
         <div class="market-right">
-          <h3>📊 売主が知っておくべき市場のポイント</h3>
+          <h3 data-i18n="market_h3">📊 売主が知っておくべき市場のポイント</h3>
           <div class="market-point">
             <div class="market-point-num">1</div>
             <div class="market-point-text">
@@ -386,22 +394,22 @@
 
   <section class="about">
     <div class="container">
-      <p class="section-label">WHY CHOOSE US</p>
-      <h2 class="section-title">なぜ私たちが<br>江東区の物件を高く売れるのか</h2>
+      <p class="section-label" data-i18n="about_label">WHY CHOOSE US</p>
+      <h2 class="section-title" data-i18n-html="about_title">なぜ私たちが<br>江東区の物件を高く売れるのか</h2>
       <div class="about-inner">
         <div class="about-left">
-          <h3>外資 × 日系オーナーサイドの<br>ハイブリッド経験</h3>
+          <h3 data-i18n-html="about_left_h3">外資 × 日系オーナーサイドの<br>ハイブリッド経験</h3>
           <div class="career-item">
-            <div class="career-tag">外資系不動産仲介</div>
-            <p class="career-desc">グローバルな不動産仲介ファームで外国人富裕層・外資ファンドとの取引を多数経験。海外投資家が物件を評価する視点・交渉スタイルを熟知。</p>
+            <div class="career-tag" data-i18n="career1_tag">外資系不動産仲介</div>
+            <p class="career-desc" data-i18n="career1_desc">グローバルな不動産仲介ファームで外国人富裕層・外資ファンドとの取引を多数経験。海外投資家が物件を評価する視点・交渉スタイルを熟知。</p>
           </div>
           <div class="career-item">
-            <div class="career-tag">日系オーナー会社</div>
-            <p class="career-desc">日系オーナー企業でリーシング・仕入れ担当として資産価値最大化の実務を経験。オーナー側の意思決定プロセスを内側から理解。</p>
+            <div class="career-tag" data-i18n="career2_tag">日系オーナー会社</div>
+            <p class="career-desc" data-i18n="career2_desc">日系オーナー企業でリーシング・仕入れ担当として資産価値最大化の実務を経験。オーナー側の意思決定プロセスを内側から理解。</p>
           </div>
           <div class="career-item">
-            <div class="career-tag">グローバルネットワーク</div>
-            <p class="career-desc">国内外の投資家・ファンド・エージェントとの継続的なリレーションを保有。一般市場に出回らない買い手候補へのリーチが可能。</p>
+            <div class="career-tag" data-i18n="career3_tag">グローバルネットワーク</div>
+            <p class="career-desc" data-i18n="career3_desc">国内外の投資家・ファンド・エージェントとの継続的なリレーションを保有。一般市場に出回らない買い手候補へのリーチが可能。</p>
           </div>
         </div>
         <div>
@@ -409,29 +417,29 @@
             <li>
               <div class="strength-icon">🌐</div>
               <div class="strength-text">
-                <strong>外資系ネットワークで買い手を広げる</strong>
-                <p>国内仲介が持ちえない外国人富裕層・外資ファンドへのチャンネルを保有。競争のある環境を作り出すことで、売却価格を最大化します。</p>
+                <strong data-i18n="str1_title">外資系ネットワークで買い手を広げる</strong>
+                <p data-i18n="str1_desc">国内仲介が持ちえない外国人富裕層・外資ファンドへのチャンネルを保有。競争のある環境を作り出すことで、売却価格を最大化します。</p>
               </div>
             </li>
             <li>
               <div class="strength-icon">⚡</div>
               <div class="strength-text">
-                <strong>交渉力が価格に直結する</strong>
-                <p>外資系仲介で培ったタフな価格交渉力。売主側に立って強交渉を行い、相場より高い条件での成約を実現します。</p>
+                <strong data-i18n="str2_title">交渉力が価格に直結する</strong>
+                <p data-i18n="str2_desc">外資系仲介で培ったタフな価格交渉力。売主側に立って強交渉を行い、相場より高い条件での成約を実現します。</p>
               </div>
             </li>
             <li>
               <div class="strength-icon">📋</div>
               <div class="strength-text">
-                <strong>オーナー目線の戦略立案</strong>
-                <p>資産家・法人オーナーのリーシング・仕入れを担当してきた経験から、売却タイミング・価格設定・見せ方まで資産利益最大化の観点でサポート。</p>
+                <strong data-i18n="str3_title">オーナー目線の戦略立案</strong>
+                <p data-i18n="str3_desc">資産家・法人オーナーのリーシング・仕入れを担当してきた経験から、売却タイミング・価格設定・見せ方まで資産利益最大化の観点でサポート。</p>
               </div>
             </li>
             <li>
               <div class="strength-icon">🔒</div>
               <div class="strength-text">
-                <strong>個人売買で手数料を削減</strong>
-                <p>仲介手数料なしの個人売買スキームをサポート。浮いた費用分だけ売主の手取りが増え、買主にも割安感を提供して成約率を上げます。</p>
+                <strong data-i18n="str4_title">個人売買で手数料を削減</strong>
+                <p data-i18n="str4_desc">仲介手数料なしの個人売買スキームをサポート。浮いた費用分だけ売主の手取りが増え、買主にも割安感を提供して成約率を上げます。</p>
               </div>
             </li>
           </ul>
@@ -442,34 +450,34 @@
 
   <section>
     <div class="container">
-      <p class="section-label">HOW IT WORKS</p>
-      <h2 class="section-title">売却サポートの流れ</h2>
-      <p class="section-desc">LINEで相談してから最短1週間で動き出せます。</p>
+      <p class="section-label" data-i18n="flow_label">HOW IT WORKS</p>
+      <h2 class="section-title" data-i18n="flow_title">売却サポートの流れ</h2>
+      <p class="section-desc" data-i18n="flow_desc">LINEで相談してから最短1週間で動き出せます。</p>
       <div class="flow-steps">
         <div class="flow-step">
           <div class="step-num"><div class="num">01</div><div class="step-label">STEP</div></div>
-          <h3>LINE無料相談</h3>
-          <p>物件の概要・ご要望をLINEで送るだけ。まずはお気軽にどうぞ。</p>
+          <h3 data-i18n="step1_h">LINE無料相談</h3>
+          <p data-i18n="step1_p">物件の概要・ご要望をLINEで送るだけ。まずはお気軽にどうぞ。</p>
         </div>
         <div class="flow-step">
           <div class="step-num"><div class="num">02</div><div class="step-label">STEP</div></div>
-          <h3>無料査定・戦略提案</h3>
-          <p>市場データと外資系ネットワークを踏まえた売却価格・方針を提案。</p>
+          <h3 data-i18n="step2_h">無料査定・戦略提案</h3>
+          <p data-i18n="step2_p">市場データと外資系ネットワークを踏まえた売却価格・方針を提案。</p>
         </div>
         <div class="flow-step">
           <div class="step-num"><div class="num">03</div><div class="step-label">STEP</div></div>
-          <h3>買い手候補の選定</h3>
-          <p>国内外のネットワークから最適な買い手候補をリストアップ。</p>
+          <h3 data-i18n="step3_h">買い手候補の選定</h3>
+          <p data-i18n="step3_p">国内外のネットワークから最適な買い手候補をリストアップ。</p>
         </div>
         <div class="flow-step">
           <div class="step-num"><div class="num">04</div><div class="step-label">STEP</div></div>
-          <h3>交渉・条件調整</h3>
-          <p>売主側の最大利益を追求する交渉をサポート。</p>
+          <h3 data-i18n="step4_h">交渉・条件調整</h3>
+          <p data-i18n="step4_p">売主側の最大利益を追求する交渉をサポート。</p>
         </div>
         <div class="flow-step">
           <div class="step-num"><div class="num">05</div><div class="step-label">STEP</div></div>
-          <h3>契約・決済完了</h3>
-          <p>司法書士・税理士との連携で安全・確実にクロージング。</p>
+          <h3 data-i18n="step5_h">契約・決済完了</h3>
+          <p data-i18n="step5_p">司法書士・税理士との連携で安全・確実にクロージング。</p>
         </div>
       </div>
     </div>
@@ -477,28 +485,28 @@
 
   <section class="cta-section">
     <div class="container">
-      <p class="section-label">FREE CONSULTATION</p>
-      <h2 class="section-title">江東区の物件、<br>今すぐ売却価値を確認する</h2>
-      <p class="cta-desc">LINEで物件の概要を送るだけ。<br>査定・ご相談は完全無料、秘密厳守で対応します。</p>
+      <p class="section-label" data-i18n="cta_label">FREE CONSULTATION</p>
+      <h2 class="section-title" data-i18n-html="cta_title">江東区の物件、<br>今すぐ売却価値を確認する</h2>
+      <p class="cta-desc" data-i18n-html="cta_desc">LINEで物件の概要を送るだけ。<br>査定・ご相談は完全無料、秘密厳守で対応します。</p>
       <button class="btn-line-main" onclick="openLineModal()">
         <svg class="btn-line-icon-lg" viewBox="0 0 24 24" fill="currentColor"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
       </svg></svg>
-        LINEで無料相談する（1タップ）
+        <span data-i18n="cta_btn">LINEで無料相談する（1タップ）</span>
       </button>
       <div class="cta-notes">
-        <span class="cta-note">査定・相談 完全無料</span>
-        <span class="cta-note">秘密厳守</span>
-        <span class="cta-note">売却義務なし</span>
-        <span class="cta-note">当日返信対応</span>
+        <span class="cta-note" data-i18n="cta_note1">査定・相談 完全無料</span>
+        <span class="cta-note" data-i18n="cta_note2">秘密厳守</span>
+        <span class="cta-note" data-i18n="cta_note3">売却義務なし</span>
+        <span class="cta-note" data-i18n="cta_note4">当日返信対応</span>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="footer-logo">GOYOU 御用</div>
-    <p style="margin-bottom:4px;font-size:0.72rem;color:rgba(255,255,255,0.3);">合同会社互陽</p>
-    <p>不動産個人売買サポート ｜ 江東区エリア専門</p>
+    <p style="margin-bottom:4px;font-size:0.72rem;color:var(--text-sub);">合同会社互陽</p>
+    <p data-i18n="footer_sub">不動産個人売買サポート ｜ 江東区エリア専門</p>
     <p style="margin-top:8px;">© 2025 合同会社互陽. All rights reserved.</p>
   </footer>
 
@@ -506,7 +514,7 @@
     <svg class="line-icon-sm" viewBox="0 0 24 24" fill="currentColor"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
       </svg></svg>
-    LINEで無料相談
+    <span data-i18n="float_btn">LINEで無料相談</span>
   </button>
 
   <!-- LINE問い合わせモーダル -->
@@ -520,22 +528,22 @@
       </svg></svg>
           LINE
         </div>
-        <h2>無料相談フォーム</h2>
-        <p>入力内容を自動コピーして<br>LINEのトークを開きます</p>
+        <h2 data-i18n="modal_title">無料相談フォーム</h2>
+        <p data-i18n-html="modal_desc">入力内容を自動コピーして<br>LINEのトークを開きます</p>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label" for="f-name">お名前 <span class="req">*</span></label>
-          <input class="form-input" id="f-name" type="text" placeholder="山田 太郎">
+          <label class="form-label" for="f-name"><span data-i18n="f_name_label">お名前</span> <span class="req">*</span></label>
+          <input class="form-input" id="f-name" type="text" placeholder="山田 太郎" data-i18n-ph="f_name_ph">
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-phone">電話番号 <span class="req">*</span></label>
+          <label class="form-label" for="f-phone"><span data-i18n="f_phone_label">電話番号</span> <span class="req">*</span></label>
           <input class="form-input" id="f-phone" type="tel" placeholder="090-0000-0000">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label" for="f-type">物件種別</label>
+          <label class="form-label" for="f-type"><span data-i18n="f_type_label">物件種別</span></label>
           <select class="form-select" id="f-type">
             <option value="">選択してください</option>
             <option>マンション（区分）</option>
@@ -546,7 +554,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-purpose">ご相談内容</label>
+          <label class="form-label" for="f-purpose"><span data-i18n="f_purpose_label">ご相談内容</span></label>
           <select class="form-select" id="f-purpose">
             <option value="">選択してください</option>
             <option>売却相談・査定希望</option>
@@ -558,34 +566,37 @@
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label" for="f-address">物件の所在地</label>
-          <input class="form-input" id="f-address" type="text" placeholder="例：江東区〇〇町">
+          <label class="form-label" for="f-address"><span data-i18n="f_address_label">物件の所在地</span></label>
+          <input class="form-input" id="f-address" type="text" placeholder="例：江東区〇〇町" data-i18n-ph="f_address_ph">
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-area">面積</label>
-          <input class="form-input" id="f-area" type="text" placeholder="例：75㎡ / 150㎡">
+          <label class="form-label" for="f-area"><span data-i18n="f_area_label">面積</span></label>
+          <input class="form-input" id="f-area" type="text" placeholder="例：75㎡ / 150㎡" data-i18n-ph="f_area_ph">
         </div>
       </div>
       <div class="form-group">
-        <label class="form-label" for="f-memo">備考・その他（任意）</label>
-        <textarea class="form-textarea" id="f-memo" placeholder="建築年・売却希望時期・その他ご質問など"></textarea>
+        <label class="form-label" for="f-memo"><span data-i18n="f_memo_label">備考・その他（任意）</span></label>
+        <textarea class="form-textarea" id="f-memo" placeholder="建築年・売却希望時期・その他ご質問など" data-i18n-ph="f_memo_ph"></textarea>
       </div>
       <p class="form-error" id="form-error"></p>
       <button class="btn-send-line" onclick="sendToLine()">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
       </svg></svg>
-        LINEで送信する
+        <span data-i18n="btn_send">LINEで送信する</span>
       </button>
       <div class="copy-notice" id="copy-notice">
         <p>✅ 入力内容をコピーしました！<br>LINEのトークに貼り付けて送信してください。</p>
       </div>
-      <p class="modal-note">送信内容はクリップボードにコピーされます。LINE画面で貼り付けて送信してください。</p>
+      <p class="modal-note" data-i18n="modal_note">送信内容はクリップボードにコピーされます。LINE画面で貼り付けて送信してください。</p>
     </div>
   </div>
 
   <script>
     const LINE_URL = "https://lin.ee/YOUR_LINE_ID";
+    const WARD_NAME_JA = "江東区";
+    const WARD_EN = "KOTO-KU";
+    const HOT_AREAS = "豊洲, 有明, 東雲, 門前仲町";
 
     // 町タブ切り替え
     function showTown(btn, idx) {
@@ -674,6 +685,201 @@
         window.open(LINE_URL, '_blank');
       }
     }
+
+    // ── I18N ──
+    const I18N = {
+      en: {
+        hero_title: '<span class="ward-name">' + WARD_EN + '</span><br>Maximize Your Property Value',
+        hero_desc: HOT_AREAS + ' and surrounding high-demand areas — our specialists handle private property sales and strategy end to end.',
+        hero_btn: 'Free LINE Consultation',
+        hero_note: '100% response · Confidential · Free valuation',
+        area_label: 'AREA CHARACTERISTICS',
+        area_title: 'The Value of <span class="ward-name">' + WARD_EN + '</span>',
+        area_desc: 'Why properties in ' + WARD_NAME_JA + ' sell at premium prices — the essential value of this area.',
+        market_label: 'MARKET REPORT',
+        market_title: WARD_EN + ' Property Market',
+        market_desc: 'Real analysis integrating latest transaction data and our global network.',
+        price_label: 'Avg. Transaction Price (Residential)',
+        hot_label: 'HOT AREAS',
+        market_h3: '📊 What Sellers Need to Know',
+        about_label: 'WHY CHOOSE US',
+        about_title: 'Why We Achieve the Best Price<br>for <span class="ward-name">' + WARD_EN + '</span> Properties',
+        about_left_h3: 'Global × Local<br>Hybrid Expertise',
+        career1_tag: 'International Real Estate',
+        career1_desc: 'Extensive experience with HNW foreign clients and international funds at a global brokerage. Deep understanding of overseas investor evaluation and negotiation style.',
+        career2_tag: 'Japanese Owner Company',
+        career2_desc: 'Hands-on asset value maximization from the owner side — leasing and acquisition at a Japanese owner company. Inside view of decision-making.',
+        career3_tag: 'Global Network',
+        career3_desc: 'Ongoing relationships with domestic and international investors, funds, and agents. Access to buyers who never appear on the open market.',
+        str1_title: 'Expand Your Buyer Pool via International Network',
+        str1_desc: "We have channels to HNW foreign buyers and international funds that domestic agents can't reach — creating competition that maximizes your sale price.",
+        str2_title: 'Negotiation Skill = Higher Price',
+        str2_desc: "Tough negotiation honed at international firms. We work on the seller's side to close above market terms.",
+        str3_title: 'Owner-Side Strategy',
+        str3_desc: 'From managing asset-owner portfolios — optimal timing, pricing, and presentation from a profit-maximization perspective.',
+        str4_title: 'Private Sale = Keep More',
+        str4_desc: 'We support commission-free private sales. More in your pocket, competitive pricing for buyers, higher closing rates.',
+        flow_label: 'HOW IT WORKS',
+        flow_title: 'The Sale Support Process',
+        flow_desc: 'After your LINE consultation, we can get moving in as little as one week.',
+        step1_h: 'Free LINE Consultation',
+        step1_p: 'Just send your property details via LINE. No pressure at all.',
+        step2_h: 'Free Valuation & Strategy',
+        step2_p: 'We propose a sale price and approach based on market data and our global network.',
+        step3_h: 'Buyer Shortlisting',
+        step3_p: 'We identify ideal buyer candidates from our domestic and international network.',
+        step4_h: 'Negotiation & Terms',
+        step4_p: 'We negotiate aggressively on your behalf to maximize your return.',
+        step5_h: 'Contract & Closing',
+        step5_p: 'Coordinated with legal and tax professionals for a safe and secure close.',
+        cta_label: 'FREE CONSULTATION',
+        cta_title: 'Your ' + WARD_EN + ' Property —<br>Check Its True Value Today',
+        cta_desc: 'Just send your property details via LINE.<br>Free and fully confidential.',
+        cta_btn: 'Free LINE Consultation (1 tap)',
+        cta_note1: 'Valuation · Free',
+        cta_note2: 'Confidential',
+        cta_note3: 'No obligation',
+        cta_note4: 'Same-day response',
+        footer_sub: 'Private Property Sale Support | ' + WARD_EN + ' Specialist',
+        modal_title: 'Free Consultation Form',
+        modal_desc: 'Your details will be auto-copied and LINE will open.',
+        f_name_label: 'Full Name',
+        f_name_ph: 'Taro Yamada',
+        f_phone_label: 'Phone Number',
+        f_type_label: 'Property Type',
+        f_purpose_label: 'Inquiry Type',
+        f_address_label: 'Property Location',
+        f_address_ph: 'E.g.: ' + WARD_EN + ' area',
+        f_area_label: 'Floor Area',
+        f_area_ph: 'E.g.: 75㎡ / 150㎡',
+        f_memo_label: 'Notes (optional)',
+        f_memo_ph: 'Year built, target sale period, other questions...',
+        btn_send: 'Send via LINE',
+        modal_note: 'Content will be copied to clipboard. Paste in LINE to send.',
+        float_btn: 'Free LINE Chat',
+      },
+      zh: {
+        hero_title: '<span class="ward-name">' + WARD_EN + '</span><br>实现不动产最高价值出售',
+        hero_desc: HOT_AREAS + '等' + WARD_NAME_JA + '高需求地区——专业团队提供私人买卖全程支持，从战略制定到最终成交一站到底。',
+        hero_btn: 'LINE免费咨询',
+        hero_note: '100%回复率 · 严格保密 · 免费估价',
+        area_label: '区域特色',
+        area_title: '<span class="ward-name">' + WARD_EN + '</span>的优势与特色',
+        area_desc: '为什么' + WARD_NAME_JA + '的房产现在能卖出高价？了解该地区的本质价值。',
+        market_label: '市场报告',
+        market_title: WARD_EN + '房产市场动态',
+        market_desc: '整合最新成交数据与全球网络信息的真实市场分析。',
+        price_label: '平均成交价格（住宅）',
+        hot_label: '热门地区',
+        market_h3: '📊 卖方须知的市场要点',
+        about_label: '为什么选择我们',
+        about_title: '我们为何能在<span class="ward-name">' + WARD_EN + '</span><br>实现最高价出售',
+        about_left_h3: '外资 × 本土业主侧<br>混合经验',
+        career1_tag: '外资房产中介',
+        career1_desc: '在全球房产中介公司积累了大量与高净值外国客户及外资基金的交易经验，深谙海外投资者的评估视角与谈判方式。',
+        career2_tag: '日系业主企业',
+        career2_desc: '在日系业主企业担任租赁·收购负责人，从内部理解业主侧的决策流程，具备资产价值最大化的实务经验。',
+        career3_tag: '全球网络',
+        career3_desc: '与国内外投资者、基金及代理商保持持续合作关系，可触达不在公开市场流通的潜在买家。',
+        str1_title: '借助外资网络扩大买家范围',
+        str1_desc: '我们拥有国内中介无法触及的高净值外国买家和外资基金渠道，通过营造竞争环境实现出售价格最大化。',
+        str2_title: '谈判实力直接转化为价格',
+        str2_desc: '依托外资中介磨练的强力价格谈判能力，站在卖方立场强力谈判，实现高于市场价格的成交。',
+        str3_title: '业主视角的战略规划',
+        str3_desc: '凭借管理资产所有者投资组合的经验，从出售时机、定价到呈现方式，以利润最大化为导向全方位支持。',
+        str4_title: '私人买卖削减手续费',
+        str4_desc: '支持无中介手续费的私人买卖方案，省下的费用直接增加卖方收益，同时为买方提供价格优势，提高成交率。',
+        flow_label: '服务流程',
+        flow_title: '出售支持流程',
+        flow_desc: 'LINE咨询后，最快一周即可启动。',
+        step1_h: 'LINE免费咨询',
+        step1_p: '只需通过LINE发送房产概要即可，请随时联系我们。',
+        step2_h: '免费估价·战略提案',
+        step2_p: '结合市场数据和全球网络，提出出售价格和方案。',
+        step3_h: '筛选潜在买家',
+        step3_p: '从国内外网络中锁定最合适的买家候选人。',
+        step4_h: '谈判·条件协商',
+        step4_p: '全力支持以卖方最大利益为目标的谈判。',
+        step5_h: '签约·完成交割',
+        step5_p: '与司法书士、税理士协作，安全可靠地完成交割。',
+        cta_label: '免费咨询',
+        cta_title: WARD_NAME_JA + '的房产，<br>立即确认出售价值',
+        cta_desc: '只需通过LINE发送房产概要。<br>估价·咨询完全免费，严格保密。',
+        cta_btn: 'LINE免费咨询（一键操作）',
+        cta_note1: '估价·咨询 完全免费',
+        cta_note2: '严格保密',
+        cta_note3: '无出售义务',
+        cta_note4: '当天回复',
+        footer_sub: '不动产私人买卖支持 | ' + WARD_EN + '地区专属',
+        modal_title: '免费咨询表单',
+        modal_desc: '输入内容将自动复制，然后打开LINE。',
+        f_name_label: '姓名',
+        f_name_ph: '山田 太郎',
+        f_phone_label: '电话号码',
+        f_type_label: '房产类型',
+        f_purpose_label: '咨询内容',
+        f_address_label: '房产所在地',
+        f_address_ph: '例：' + WARD_EN + '某某町',
+        f_area_label: '面积',
+        f_area_ph: '例：75㎡ / 150㎡',
+        f_memo_label: '备注·其他（可选）',
+        f_memo_ph: '建筑年份、希望出售时间、其他问题等...',
+        btn_send: '通过LINE发送',
+        modal_note: '内容将复制到剪贴板，请在LINE中粘贴发送。',
+        float_btn: 'LINE免费咨询',
+      }
+    };
+
+    var currentLang = 'ja';
+
+    // 初期化: 元のHTMLを保存
+    document.querySelectorAll('[data-i18n], [data-i18n-html]').forEach(function(el) {
+      el.dataset.origHtml = el.innerHTML;
+    });
+
+    function setLang(lang) {
+      currentLang = lang;
+      try { localStorage.setItem('goyou_lang', lang); } catch(e) {}
+      document.querySelectorAll('.lang-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+      if (lang === 'ja') {
+        document.querySelectorAll('[data-i18n], [data-i18n-html]').forEach(function(el) {
+          if (el.dataset.origHtml !== undefined) el.innerHTML = el.dataset.origHtml;
+        });
+        document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+          if (el.dataset.origPh !== undefined) el.placeholder = el.dataset.origPh;
+        });
+        document.documentElement.lang = 'ja';
+        return;
+      }
+      var t = I18N[lang];
+      if (!t) return;
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.dataset.i18n;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.dataset.i18nHtml;
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+        var key = el.dataset.i18nPh;
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+    }
+
+    // placeholder元値を保存
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+      el.dataset.origPh = el.placeholder;
+    });
+
+    // 保存済み言語を復元
+    try {
+      var saved = localStorage.getItem('goyou_lang');
+      if (saved && saved !== 'ja') setLang(saved);
+    } catch(e) {}
   </script>
 </body>
 </html>
